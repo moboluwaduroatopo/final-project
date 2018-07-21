@@ -1,0 +1,13 @@
+$(document).ready(function(){
+	   $("#stafff").hide();
+	   $("#form1").hide(); 
+    $("#ans").click(function(){
+       $("#stafff").show();
+        $("#form1").show();
+        alert();
+    });
+     $("#ap").click(function(){
+        $("#form1").show();
+        alert();
+    });
+}); 
