@@ -18,12 +18,7 @@
     
   
 </style>
-<?php
-include"conn.php";
-$select = mysqli_query($con, "select * from product_tb ")
-while ($row= mysqli_fetch_array($select)) {
 
-?>
 <script type="text/javascript">
 
 
@@ -55,7 +50,10 @@ while ($row= mysqli_fetch_array($select)) {
         var x="<tr><td class=''> <select class='form-control put'>"
         <?php
 
-        echo" <option value='".$row[product_id]."' >".$row[product_name]." </option> ";
+            include"conn.php";
+            $select = mysqli_query($con, "select * from product_tb ")
+            while ($row= mysqli_fetch_array($select)) {
+           echo" <option value='".$row['product_id']."' >".$row['product_name']." </option> ";
           ?> 
         
         "</select></td><td><input  placeholder='' id='p1' class='form-control p1' value='' onkeyup ='myfirst();'></td><td class='number'><input id='q1'  placeholder=''  class='form-control q1' onkeyup ='myfirst();' ></td><td><input placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
