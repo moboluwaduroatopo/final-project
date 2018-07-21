@@ -18,35 +18,47 @@
     
   
 </style>
+<?php
+include"conn.php";
+$select = mysqli_query($con, "select * from product_tb ")
+while ($row= mysqli_fetch_array($select)) {
+
+?>
 <script type="text/javascript">
 
 
   
-     $(document).ready(function()
-     {
-    var pp="";
-    var x = '';
-           $.post('Fetch.php',{x:x},function(data){
-            var prods = JSON.parse(data);
+   $(document).ready(function()
+  {
+   // var pp="";
+    //var x = '';
+      //     $.post('Fetch.php',{x:x},function(data){
+        //    var prods = JSON.parse(data);
           //alert(data);
            //we are here creating an option out of pp
-         for( i=0; i < prods.length; i++)
+         //for( i=0; i < prods.length; i++)
            // for(i=0;i<6;i++)
           //text += cars[i] + "<br>";
-            {
-              pp += "<option>"+prods[i].product_name+"</option>";
-              pro = prods[i].price;
-             }
+           // {
+             // pp += "<option>"+prods[i].product_name+"</option>";
+              //pro = prods[i].price;
+             //}
 
               // p = prods[i].price;
               //  alert(p);
               //  $('#p1').val(p);
                 
-            });
+            //});
      $("#add").on("click",function()
       {
         
-        var x="<tr><td class=''> <select class='form-control put'><option>Select Product name</option>"+pp+"</select></td><td><input  placeholder='' id='p1' class='form-control p1' value='"+pro+"' onkeyup ='myfirst();'></td><td class='number'><input id='q1'  placeholder=''  class='form-control q1' onkeyup ='myfirst();' ></td><td><input placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
+        var x="<tr><td class=''> <select class='form-control put'>"
+        <?php
+
+        echo" <option value='".$row[product_id]."' >".$row[product_name]." </option> ";
+          ?> 
+        
+        "</select></td><td><input  placeholder='' id='p1' class='form-control p1' value='' onkeyup ='myfirst();'></td><td class='number'><input id='q1'  placeholder=''  class='form-control q1' onkeyup ='myfirst();' ></td><td><input placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
         $("table").append(x);
         //alert();
       });
@@ -58,6 +70,9 @@
      }); 
 
 </script>
+<?php
+};
+?>
 <body>
   <?php include 'dashboard.php'; ?>
      <div class="content-wrapper">
@@ -160,4 +175,34 @@
         });
 
 </script>
+<script type="text/javascript">
+ $("#salestable").delegate(".put","change",function(){
+    var pid = $(this).val();
+    var tr = $(this).parent().parent();
+    $(".overlay").show();
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      dataType : "json",
+      data : {getPriceAndQty:1,id:pid},
+      success : function(data){
+        tr.find(".tqty").val(data["product_stock"]);
+        tr.find(".pro_name").val(data["product_name"]);
+        tr.find(".qty").val(1);
+        tr.find(".price").val(data["product_price"]);
+        tr.find(".amt").html( tr.find(".qty").val() * tr.find(".price").val() );
+        calculate(0,0);
+      }
+    })
+  })
+
+</script>
+<?php
+ if (isset($_POST["getPriceAndQty"])) {
+  $m = new Manage();
+  $result = $m->getSingleRecord("products","pid",$_POST["id"]);
+  echo json_encode($result);
+  exit();
+}
+?>
 </html>
