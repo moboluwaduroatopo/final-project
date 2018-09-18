@@ -15,6 +15,9 @@ $con=mysqli_connect("localhost","root","","shop_db");
 <script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="myscrip.js"></script>
 <style type="text/css"> 
+#it{
+	text-align: center;
+}
 </style>
 <body class=>
 	<?php include 'dashboard.php'; ?>
@@ -45,7 +48,17 @@ while($r=mysqli_fetch_array($view)){
 	$id=$r['product_id'];
 	$_SESSION['id']=$id;
 	
-echo "<div class='col-md-4'><div class='card'><img src='".$r['pimage']."' width=200px height =200px /><div class='card-block'><h4>".$r['product_name']."</h4><p>".$r['price']."</p></div><div class='list-group'><a  class='list-group-item nav-link' href='updateproduct1.php?id=".$id."'><button class='btn btn-success'>Edit</button></a><span><a href='deletefresh.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></span></div></div></div>";
+echo "<div class='col-md-4'>
+<div class='card'>
+<img src='".$r['pimage']."' width=200px height =200px />
+<div class='card-block'>
+<h4 id='it'>".$r['product_name']."</h4>
+<p id='it'><span>#</span>".$r['price']." </p>
+<p id='it'><span><a  class='' href='updateproduct1.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></span>
+<span><a href='deletefresh.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></span></p>
+</div>
+</div>
+</div>";
 $counter++;
 	if($counter == 3)
 	{
