@@ -36,7 +36,9 @@ Class product {
                		// }
 							$pid = $_POST['sproducts'.$i];
                             $saleqty=$_POST['saleqty'.$i];
+                            //$'#q1'+sn
 							 $result=mysqli_query($this->connect, "INSERT INTO invoice_tb(sale_id,product_id,sale_qty)VALUES('$sid','$pid','$saleqty')");
+
 						}
 					}
 

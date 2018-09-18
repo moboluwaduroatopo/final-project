@@ -142,7 +142,7 @@ function sproducts(q)
      <th>price</th>
       <th>Qty</th>
      <th>Total</th>
-     <th> <button class="btn btn-success"" id="add" >+</button></th>
+     <th> <input type="button" class="btn btn-success" value="+" name="" id="add"> </th>
      </tr>
      </table>
     <datalist id='products'></datalist>
@@ -244,85 +244,6 @@ window.addEventListener("load",myFunction);
       $("body").find("#displayStaff").append("<div>"+call+"</div>");
     })
    };
-  //  $("#saveproduct").click(function(){
-  // //alert("hi");
-  //   var invoice = $("#get_order_data").serialize();
-
-  //   // if ($("#cust_name").val() === "") {
-  //   //   alert("Please Enter Customer Name");
-  //   // }else if($("#paid").val() === ""){
-  //   // //  alert("Please Enter Paid Amount");
-  //  // }else{
-
-  //     $.ajax({
-  //       url : DOMAIN+"/includes/saleprocess.php",
-  //       method : "POST",
-  //       data : $("#get_order_data").serialize(),
-  //       success : function(data){
-
-  //         if (data === "ORDER_COMPLETED") {
-  //           $("#get_order_data").trigger("reset");
-  //           if (confirm("Do u want to print Invoice ?")) {
-  //             window.location.href = DOMAIN+"/includes/invoice_bill.php?"+invoice;
-  //           }
-  //         }
-  //       }
-  //     });
-   // }
-
-    
-
-//  });
-
-    //   $(document).ready(function()
-    //  {
-    //   $("#saveproduct").click(function()
-    //  {
-    //   var sproducts= [];
-    //   var id= [];
-    //   var saleqty= [];
-    //   $('.sproducts').each(function(){
-    //    sproducts.push($(this).val());
-    //   });
-    //    $('.sale_id').each(function(){
-    //     sale_id.push($(this).val());
-    //   })
-    //     $('.saleqty').each(function(){
-    //     saleqty.push($(this).val());
-    //   });
-    //     $.post("saleprocess.php",{sproducts:sproducts,id:id,saleqty:saleqty },
-    //     function (callback) {
-    // //       $("td").val();
-    // //   for(var i=0; i<=10; i++)
-    // //   {
-    // //     $('tr'+i+'').remove();
-    // // }
-    //     });
-
-    //    });
-    //  });
   
-   //  $("#saveproduct").on("click", function(){
-   //   // product_id=$(".product_id").val();
-   //   //   alert(pro_name);
-   //   //  sale_qty=$(".sale_qty").val();
-   //   //  sale_id=$("sale_id").vla();
-   //   customer_name=$("#customer_name").val();
-   //     total=$(".total").val();
-   //     tende=$(".tende").val();
-   //     chang=$(".chang").val();
-   //      id=$("#id").val();
-   //    payment_type=$("#payment_type").val();
-   //  // $.post("saleprocess.php", {customer_name:customer_name,id:id,qty:qty,total:total,tend:tende,chang:chang,payment_type:payment_type}, function(callback){
-   //  //   if (callback == "Sucessful")
-   //  //   {
-   //  //     alert()
-   //  //   }
-   //  $.post("saleprocess.php",{customer_name:customer_name,id:id,total:total,tende:tende,chang:chang,payment_type:payment_type},function(callback)
-   //  {
-   //   // alert("my id"+callback);
-
-   //  });
-   // })
 </script>
 </html>
