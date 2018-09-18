@@ -35,7 +35,7 @@
 <form class="form-horizontal" method="post" action="staff.php" enctype="multipart/form-data">
 
 <fieldset>
-
+<span style="color: white;margin-left: 150px;background-color: red;width: 30%;height: 50px"><?php if(isset($return)){ echo $return;} ?></span>
 <div class="form-group">
     <div class="form-row">
    <div class="col-md-6">
@@ -56,6 +56,9 @@
      <label for="exampleInputEmail1">Email address</label>
   <input id="email" name="email" type="email" placeholder="email" class="form-control input-md" required="">
 </div>
+<!-- //<?php 
+
+//echo $msg?> -->
 <div class="form-group">
    <label for="exampleInputEmail1">Username</label>
   <input id="username" name="username" type="username" placeholder="username" class="form-control input-md" required="">

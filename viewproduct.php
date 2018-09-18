@@ -45,7 +45,7 @@ while($r=mysqli_fetch_array($view)){
 	$id=$r['product_id'];
 	$_SESSION['id']=$id;
 	
-echo "<div class='col-md-4'><div class='card'><img src='".$r['pimage']."' width=200px height =200px /><div class='card-block'><h4>".$r['product_name']."</h4><p>".$r['price']."</p><div class='list-group'><a  class='list-group-item nav-link' href='updateproduct1.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></div></div></div></div>";
+echo "<div class='col-md-4'><div class='card'><img src='".$r['pimage']."' width=200px height =200px /><div class='card-block'><h4>".$r['product_name']."</h4><p>".$r['price']."</p></div><div class='list-group'><a  class='list-group-item nav-link' href='updateproduct1.php?id=".$id."'><button class='btn btn-success'>Edit</button></a><span><a href='deletefresh.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></span></div></div></div>";
 $counter++;
 	if($counter == 3)
 	{

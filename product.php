@@ -32,14 +32,21 @@
 					</div>
 					<?php
 					require("conn.php");
+					$n=0;
 					$select = mysqli_query($con, "select * from type");
 					while($r=mysqli_fetch_array($select)){
+						 $n++;
+	                 $id=$r['type_id'];
+	                 $_SESSION['id']=$id;
 					echo"
 					<div class='col-md-4 '>
 						<div class='card'>
 							<img src='".$r['image']."'>
 							<div class='card-block'>
 							<a href='viewproduct.php?tid=".$r['type_id']."'><button class='btn btn-success'>View More</button></a>
+							<a href='edittype.php?id=".$id."'><button class='btn btn-success'>Edit</button></a>
+							<a href='deletetype.php?id=".$id."'><button class='btn btn-success'>Delete</button></a>
+							
 							</div>
 						</div>
 					</div>

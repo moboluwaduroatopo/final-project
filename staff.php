@@ -1,47 +1,66 @@
+<?php 
+//session_start();
+$errors=array();
+//$msg="";
+//require('conn.php');
+	Class Staff{
+		// public $
+		// public $password;
+		// public $username;
+		public $connection;
 
-<?php
-session_start();
-$con=mysqli_connect("localhost","root","","shop_db");
+		public function connect(){
 
-if(isset($_POST['submit'])) 
-{
-	$sname=$con->real_escape_string($_POST['sname']); 
-	$mname=$con->real_escape_string($_POST['mname']); 
-	$lname=$con->real_escape_string($_POST['lname']); 
-	$email=$con->real_escape_string($_POST['email']); 
-	$username=$con->real_escape_string($_POST['username']);
-	$password=$con->real_escape_string($_POST['password']); 
-	$ppt=$con->real_escape_string('images/'.$_FILES['ppt']['name']);
-	// if (preg_match("!images!", $_FILES['ppt']['type']) ) {
-	// 	if (copy($_FILES['ppt']['tmp_name'], $ppt)) {
-	// 	$_SESSION['username']=$username;
-	// 	$_SESSION['ppt']=$ppt;
-		
-	//  }
- //   else{
+			$this->connection=mysqli_connect("localhost", "root", "", "shop_db");
+		}
 
- //   	echo"file upload failed";
- //   }
- //   } 
-	// else{
- //     echo"please only upload GIF, JPG, or PNG images!";
-	// }
+			private function emailExists($email){
+		$pre_stmt = $this->connection->prepare("SELECT staff_id FROM staff_tb WHERE email = ? ");
+		$pre_stmt->bind_param("s",$email);
+		$pre_stmt->execute() or die($this->connection->error);
+		$result = $pre_stmt->get_result();
+		if($result->num_rows > 0){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+		public function createUserAccount($sname,$mname,$lname,$email,$username,$password,$ppt){
+		//To protect your application from sql attack you can user 
+		//prepares statment
+		if ($this->emailExists($email)) {
+			$return = "EMAIL_ALREADY_EXISTS";
+			include("staff1.php");
+			//$msg="please";
+		}else{
+			//$pass_hash = password_hash($password,PASSWORD_BCRYPT,["cost"=>8]);
+			//$date = date("Y-m-d");
+			//$notes = "";
+			$pre_stmt = $this->connection->prepare("INSERT INTO staff_tb(surname,middlename,lastname,email,username, password,passport)
+            VALUES (?,?,?,?,?,?,?)");
+			$pre_stmt->bind_param("sssssss",$sname,$mname,$lname,$email,$username,$password,$ppt);
+			$result = $pre_stmt->execute() or die($this->connection->error);
 
-	$a = mysqli_query($con,"INSERT INTO staff_tb(surname,middlename,lastname,email,username, password,passport)VALUES('$sname','$mname','$lname','$email','$username','$password','$ppt')");
-	
-	
-	if ($a) {
-			header("Location:stafflogin.html");;
+			if ($result) {
+					header("Location:stafflogin.html");
+			}else{
+					//echo "failed".mysqli_error($con);
+		header("Location:staff1.php");
+			}
+		}
 			
 	}
-	else
-	{
-		//echo "failed".mysqli_error($con);
-		header("Location:staff.html");
-	};
+		
+			
 	
-  
-}
+	}
+	//}
+$staff = new Staff();
+  $staff->connect();
+ echo $staff->createUserAccount($_POST["sname"], $_POST["mname"],$_POST["lname"], $_POST["email"],$_POST["username"], $_POST["password"],('images/'.$_FILES['ppt']['name']));
+
+	
+ 
  
  
 ?>

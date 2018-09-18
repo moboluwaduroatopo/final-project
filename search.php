@@ -25,7 +25,8 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
    
- ';
+ '
+ ;
  while($row = mysqli_fetch_array($result))
  {
   $output .= '

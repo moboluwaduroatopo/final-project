@@ -1,44 +1,60 @@
-<?php
+<?php 
 session_start();
 $errors=array();
-require('conn.php');
+//require('conn.php');
 	Class Staff{
-		public $password;
-		public $username;
+		// public $
+		// public $password;
+		// public $username;
 		public $connection;
 
 		public function connect(){
-			$this->connection=mysqli_connect("localhost", "root", "", "shop_db");}
-		public function login($usern, $pword){
-			$login=mysqli_query($this->connection, "SELECT * FROM admin Where username='$usern' and password='$pword'");
-			$count=mysqli_num_rows($login);
-			while ($row=mysqli_fetch_array($login)) {
-			$_SESSION['name'] =$row['surname'];
-			$_SESSION['middle']=$row['middlename'];
-			$_SESSION['pass'] = $row['passport'];
 
-			}
-			if ($count > 0) {
-				header("Location:dashboard.php");
-				//$_SESSION['username'] = $usern;
-                //$_SESSION['success'] = "You are now logged in";
-				//echo "done";
-			}
-			else{
-				header("Location: admin.html");
-				//echo ("Not Found". mysqli_error($this->connection));
-			}
-		}
-		public function display(){
-
+			$this->connection=mysqli_connect("localhost", "root", "", "shop_db");
 		}
 
-	} 
+			private function emailExists($email){
+		$pre_stmt = $this->connection->prepare("SELECT admin_id FROM admin WHERE email = ? ");
+		$pre_stmt->bind_param("s",$email);
+		$pre_stmt->execute() or die($this->connection->error);
+		$result = $pre_stmt->get_result();
+		if($result->num_rows > 0){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+		public function createUserAccount($sname,$mname,$lname,$email,$username,$password,$ppt){
+		//To protect your application from sql attack you can user 
+		//prepares statment
+		if ($this->emailExists($email)) {
+			$return = "EMAIL_ALREADY_EXISTS";
+			include"adminregister.php";
+		}else{
+			//$pass_hash = password_hash($password,PASSWORD_BCRYPT,["cost"=>8]);
+			//$date = date("Y-m-d");
+			//$notes = "";
+			$pre_stmt = $this->connection->prepare("INSERT INTO admin(surname,middlename,lastname,email,username, password,passport)
+            VALUES (?,?,?,?,?,?,?)");
+			$pre_stmt->bind_param("sssssss",$sname,$mname,$lname,$email,$username,$password,$ppt);
+			$result = $pre_stmt->execute() or die($this->connection->error);
+			if ($result) {
+					header("Location:adminlogin1.php");
+			}else{
+					//echo "failed".mysqli_error($con);
+		header("Location:admin.html");
+			}
+		}
+			
+	}
+		
+			
 	
-  $staff=new Staff();
-  $staff->connect();
- echo  $staff->login($_POST["username"], $_POST["password"]);
+	}
 
+
+	
+ 
  
  
 ?>

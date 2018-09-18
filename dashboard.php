@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php session_start();
+$connect=mysqli_connect("localhost","root","","shop_db");
+if (isset($_SESSION["adminid"])) {
+  //session_destroy();
+//header("Location: adminlogin.html");
+
+?>
  <!DOCTYPE html>
 <html lang="en">
 
@@ -58,10 +64,16 @@
             <span class="nav-link-text">ADD PRODUCT </span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="addtype.php">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">ADD Categories </span>
+          </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">ADMIN LOGIN </span>
+            <span class="nav-link-text">ADMIN LOGIN/REG </span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
@@ -118,10 +130,8 @@
     </div>
   </nav>
    
-    <div class="container-fluid">
-<div id="result" style="margin-left: 300px">
+<div id="result" style="margin-left: 300px" class="col-md-3">
   
-</div>
 </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -186,7 +196,11 @@
  });
 });
 </script>
-
+<?php
+} else{
+  header("Location: adminlogin1.php");
+}
+?>
 </body>
 
 </html>

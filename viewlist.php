@@ -32,7 +32,7 @@ $con=mysqli_connect("localhost","root","","shop_db");
    <div style="margin:20px;width: 100% ">
    	<h5 style="text-align: center;">LIST OF STAFF</h5>
 <table border="1" style="width:100%" class="table">
-	<tr><th>No</th><th>Surname</th><th>Middlename</th><th>Last name</th><th>Email</th><th>Username</th><th>Password</th><th>Passport</th><th>Edit</th></tr>
+	<tr><th>No</th><th>Surname</th><th>Middlename</th><th>Last name</th><th>Email</th><th>Username</th><th>Password</th><th>Passport</th><th>Edit</th><th>Delete</th></tr>
 
 <?php
 $n=0;
@@ -41,7 +41,8 @@ while($r=mysqli_fetch_array($view)){
 	$n++;
 	$id=$r['staff_id'];
 	$_SESSION['id']=$id;
-echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td><td>".$r['lastname']."</td><td>".$r['email']."</td><td>".$r['username']."</td><td>".$r['password']."</td><td><img src='".$r['passport']."' width=50px height =50px</td><td><a href='edit.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></td></tr>";
+echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td><td>".$r['lastname']."</td><td>".$r['email']."</td><td>".$r['username']."</td><td>".$r['password']."</td><td><img src='".$r['passport']."' width=50px height =50px</td><td><a href='edit.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></td>
+<td><a href='deletestaff.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></td></tr>";
 }
 
 ?></table></div></div></div></div></body>
