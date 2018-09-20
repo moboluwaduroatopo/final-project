@@ -27,21 +27,7 @@
     var staff="";
      $(document).ready(function()
      {
-       
-    // var y = '';
-    //        $.post('fetchstaff.php',{y:y},function(data){
-    //          staf = JSON.parse(data);
-
-    //      for( i=0; i < staf.length; i++)
-      
-    //         {
-
-    //         staff += "<option value = "+staf[i].staff_id+">"+staf[i].surname+" "+staf[i].middlename+"</option>";
-           
-    //          }
-    //           var r = " <select id='sta'><option>Attendant's signature</option>"+staff+" </select>"
-    //           $("#att").show(r);
-    //         });
+ 
     var pp="";
     var x = '';
            $.post('Fetch.php',{x:x},function(data){
@@ -127,7 +113,7 @@ function sproducts(q)
       <div class="form-group">
     <div class="form-row">
    <div class="col-md-6">
-   <label for="exampleInputEmail1" >customer's name</label>
+   <label for="exampleInputEmail1"  >customer's name</label>
   <input id="customer_name" name="customer_name" type="text" placeholder="customer's name" class="form-control input-md" required="">
     </div>
  <div class="col-md-6">
@@ -192,38 +178,63 @@ function sproducts(q)
 
 </body>
 <script type="text/javascript">
-  
-        $('#salestable').on('input', '.q1',function(){
-          var overallTotal=0;
-          var pricevalue =$(this).val();
-          var quantity= $(this).closest('tr').find('.p1').val();
-          var product = pricevalue*quantity;
-          $(this).closest('tr').find('#t1').val(product);
+  $("#salestable").delegate(".q1","keyup",function(){
+    var q1 = $(this);
+   // var tr = $(this).parent().parent();
+    var quantity= $(this).closest('tr').find('.p1').val();
+    if (isNaN(q1.val())) {
+      alert("Please enter a valid quantity");
+      q1.val(1);
+    }else{
+      if($('#q1'+sn).val() >qua) {
+        alert("Sorry ! This much of quantity is not available");
+       q1.val(1)
+      }else{
+       // tr.find("#t1").html(q1.val() * tr.find(".p1").val());
+       // calculate(0,0);
+        var product = q1.val()*quantity;
+          $(this).closest('tr').find('#t1').val(product)
+             calculate();
+      }
+
+    }
+
+    
+  })
+       // $('#salestable').on('input', function(){
+        //   var overallTotal=0;
+        //   var pricevalue =$(this).val();
+        //   var quantity= $(this).closest('tr').find('.p1').val();
+
+        //   var product = pricevalue*quantity;
+        //   $(this).closest('tr').find('#t1').val(product);
            
-          $('#salestable #t1').each(function(){
-            if($('#q1'+sn).val() >qua){
-         //alert("sufficient");
-         var product=0;
-          $(this).closest('tr').find('#t1').val(product);
-             alert("Sorry , pls check the available quantity in Stock")
-        }  
-           var currentotal=$(this).val();
-            if(currentotal==""){currentotal=0;} 
-          overallTotal+=parseFloat(currentotal);
-             
-           if (isNaN(overallTotal)) {
-              overallTotal=""+n;
+          // $('#salestable #t1').each(function(){
+          //  var currentotal=$(this).val();
+          //   if(currentotal==""){currentotal=0;} 
+          // overallTotal+=parseFloat(currentotal);  
+          //  if (isNaN(overallTotal)) {
+          //     overallTotal=""+n;
               
-            }
+          //   }
             
-             })
+          //    })
 
-              $('#Total').val(overallTotal);
-
-          
-        });
+          //     $('#Total').val(overallTotal);
+        
+       //  });
+function calculate(){
+   var sub_total = 0;
+    // var paid_amt = paid;
+    $("#salestable #t1").each(function(){
+      sub_total = sub_total + ($(this).val() * 1);
+    })
+         $('#Total').val(sub_total); 
+}
     
       function first() {
+       
+     
         var t=document.getElementById('Total').value;
         var ten=document.getElementById('Tendering').value ;
         var Chang=document.getElementById('Change');
@@ -238,20 +249,7 @@ function sproducts(q)
          $('#print').hide();
  });
      
-        // $('#salestable').on('input', '.first' ,function(){
-        //   var x = $(this).val();
-        // // alert(x); 
-        //   $.post('Fetch.php',{x:x},function(data){
-        //     alert(data);
-        // d = JSON.parse(data);
-        //  //alert(d.product_name);
-        //     document.getElementById('products').innerHTML = "<option value="+d[2].product_name+">";
-        //     p = d[2].price;
-        //     $('#p1').val(p);
-        //     //$(this).closest('tr').find('#p1').val("88");
-           
-        //   });
-        // });
+        
 window.addEventListener("load",myFunction);
  function myFunction(){
     $.post("fetchstaff.php", "", function(call){

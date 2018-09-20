@@ -25,20 +25,14 @@ Class product {
 						if(isset($_POST['sproducts'.$i])) 
                        
 						{
-						// $rem_qty =$qt1[$i] - $saleqty[$i];
-						// //echo 'rem_qty';
-						// if($rem_qty < 0){
-      //           		return "fail to complete"
-      //           	}
-               		// else{
-               			// $sql ="UPDATE product_tb SET quantity = '$rem_qty' WHERE product_id ='".$id[$i]."'";
-               			// $this->connect->query($sql);
-               		// }
+		
 							$pid = $_POST['sproducts'.$i];
                             $saleqty=$_POST['saleqty'.$i];
-                            //$'#q1'+sn
-							 $result=mysqli_query($this->connect, "INSERT INTO invoice_tb(sale_id,product_id,sale_qty)VALUES('$sid','$pid','$saleqty')");
+                            $qt1=$_POST['qt1"+sn+"'.$i];
+                            $rem_qty=$qt1[$i] - $saleqty[$i];
 
+							 $result=mysqli_query($this->connect, "INSERT INTO invoice_tb(sale_id,product_id,sale_qty)VALUES('$sid','$pid','$saleqty')");
+                           $result1s=mysql_query($this->connect, "UPDATE product_tb SET quantity='rem_qty' WHERE product_id='".$id[$i]."'");
 						}
 					}
 

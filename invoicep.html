@@ -12,7 +12,7 @@
 <script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css">
 <body>
-     <table border="1" style="width: 100%">
+     <table border="1" style="width: 80%">
      	<tr>
      	<th>Product name</th>
      	<th>qty</th>
@@ -20,13 +20,13 @@
      	<th>total</th>
      	<th><button class="btn btn-info add" id="add" >+</button></th>
      	
-     </tr>
+    <!--  </tr>
     <tr><td><input type="" name=""></td>
     	<td><input type="" name=""></td>
     	<td><input type="" name=""></td>
     	<td><input type="" name=""></td>
     	<td><button id="show">-</button></td>
-    </tr>
+    </tr> -->
      </table>
 </body>
 <script type="text/javascript">
@@ -34,7 +34,9 @@
 
 	$(document) .ready(function()
 	{
-		var x="<tr><td><input class='form-control'></td><td><input class='form-control'></td><td><input class='form-control'></td><td><input class='form-control'></td><td><button class='btn btn-info add' id='show' >-</button></td></tr>"
+    var y=[{"product_name":"fish","price":"300"},{"product_name":"meat","price":"450"}, {"product_name":"bread","price":"600"},{"product_name":"biscult","price":"900"},{"product_name":"bean","price":"490"},{"product_name":"rice","price":"700"},]
+    
+		var x="<tr><td><input class='form-control'></td><td><input class='form-control'></td><td><input class='form-control'></td><td><input class='form-control'></td><td><button class='btn btn-danger add' id='show' >-</button></td></tr>"
 
    $('#add').on("click",function()
    {
