@@ -82,7 +82,7 @@
         //qua = prods[i].quantity;
         pri = prods[i].price;
         qtys=prods[i].quantity;
-        alert(prods[i].product_id);
+       // alert(prods[i].product_id);
         $('#p1'+sn).val(pri);
         $('#qt1'+sn).val(qtys);
         // if($('#q1'+sn).val()<=qua){
@@ -100,11 +100,12 @@ function sproducts(q)
         qua = prods[i].quantity;
         // pri = prods[i].price;
         // $('#p1'+sn).val(pri);
-        if($('#q1'+sn).val()<=qua){
-         alert("sufficient");
-        }else{
-         alert(" Not sufficient");
 
+        if($('#q1'+sn).val()<=qua){
+         //alert("sufficient");
+         
+        }else{
+                 
         }
      }
 </script>
@@ -191,22 +192,35 @@ function sproducts(q)
 
 </body>
 <script type="text/javascript">
-
+  
         $('#salestable').on('input', '.q1',function(){
           var overallTotal=0;
           var pricevalue =$(this).val();
           var quantity= $(this).closest('tr').find('.p1').val();
           var product = pricevalue*quantity;
           $(this).closest('tr').find('#t1').val(product);
+           
           $('#salestable #t1').each(function(){
-            var currentotal=$(this).val();
-            if(currentotal==""){currentotal=0;}
-            overallTotal+=parseFloat(currentotal);
-            if (isNaN(overallTotal)) {
+            if($('#q1'+sn).val() >qua){
+         //alert("sufficient");
+         var product=0;
+          $(this).closest('tr').find('#t1').val(product);
+             alert("Sorry , pls check the available quantity in Stock")
+        }  
+           var currentotal=$(this).val();
+            if(currentotal==""){currentotal=0;} 
+          overallTotal+=parseFloat(currentotal);
+             
+           if (isNaN(overallTotal)) {
               overallTotal=""+n;
+              
             }
+            
              })
+
               $('#Total').val(overallTotal);
+
+          
         });
     
       function first() {

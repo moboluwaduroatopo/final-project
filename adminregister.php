@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Staff registration form</title>
+	<title> registration form</title>
 	<style type="text/css">
   
   </style>
@@ -19,7 +19,7 @@
       <div class="card-header">ADMIN REGISTER FORM </div>
       <div class="card-body">
       
-<form class="form-horizontal" method="post" action="admin.php" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action="adminlogin.php" enctype="multipart/form-data">
 <fieldset>
   <span style="color: white;margin-left: 150px;background-color: red;width: 30%;height: 50px"><?php if(isset($return)){ echo $return;} ?></span>
 <div class="form-group">
