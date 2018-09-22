@@ -1,34 +1,60 @@
 <?php
 session_start();
-$con=mysqli_connect("localhost","root","","shop_db");
+$errors=array();
+//require('conn.php');
+	Class Staff{
+		// public $
+		// public $password;
+		// public $username;
+		public $connection;
 
-if(isset($_POST['submit'])) 
-{
-	$sname=$con->real_escape_string($_POST['sname']); 
-	$mname=$con->real_escape_string($_POST['mname']); 
-	$lname=$con->real_escape_string($_POST['lname']); 
-	$email=$con->real_escape_string($_POST['email']); 
-	$username=$con->real_escape_string($_POST['username']);
-	$password=$con->real_escape_string($_POST['password']); 
-	$ppt=$con->real_escape_string('images/'.$_FILES['ppt']['name']);
-	
+		public function connect(){
 
-	$a = mysqli_query($con,"INSERT INTO admin(surname,middlename,lastname,email,username, password,passport)VALUES('$sname','$mname','$lname','$email','$username','$password','$ppt')");
-	
-	
-	if ($a) {
-		
-			header("Location:adminlogin.html");
+			$this->connection=mysqli_connect("localhost", "root", "", "shop_db");
+		}
+
 			
-	}
-	else
-	{
-		//echo "failed".mysqli_error($con);
-		header("Location:admin.html");
-	};
+		public function login($username, $password){
+			if (isset($_POST['username']) AND isset($_POST['password'])) {
+				$username = $_POST['username'];
+                $password=$_POST['password'];
+			$login=mysqli_query($this->connection, "SELECT * FROM admin Where username='$username' and password='$password'");
+			$count=mysqli_num_rows($login);
+			while ($row=mysqli_fetch_array($login)) {
+			$_SESSION['adminid']=$row['admin_id'];
+			$_SESSION['name'] =$row['surname'];
+			$_SESSION['middle']=$row['middlename'];
+			$_SESSION['pass'] = $row['passport'];
+
+			}
+			if ($count > 0) {
+				header("Location:dashboard.php");
+				//$_SESSION['username'] = $usern;
+                //$_SESSION['success'] = "You are now logged in";
+				//echo "done";
+			}else{
+				echo"failed".mysqli_error($this->connection);
+				//header("Location: adminlogin1.php");
+				//echo ("Not Found". mysqli_error($this->connection));
+			}
+			}
+			else{
+				echo"failed".mysqli_error($this->connection);
+				//header("Location: adminlogin1.php");
+				//echo ("Not Found". mysqli_error($this->connection));
+			}
+			
+			
 	
-  
-}
+	}
+	}
+
+
+ $staff = new Staff();
+  $staff->connect();
+ echo $staff->login($_POST["username"], $_POST["password"]);
+
+
  
  
 ?>

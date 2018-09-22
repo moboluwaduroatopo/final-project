@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   <script type="text/javascript" src="jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="jquery/popper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-dist/css/bootstrap.css">
+<script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css">
+<body>
+     <table border="1" style="width: 80%">
+     	<tr>
+     	<th>Product name</th>
+      <th>price</th>
+     	<th>qty</th>
+     	<th>total</th>
+     	<th><button class="btn btn-info add" id="add" >+</button></th>
+     	
+    <!--  </tr>
+    <tr><td><input type="" name=""></td>
+    	<td><input type="" name=""></td>
+    	<td><input type="" name=""></td>
+    	<td><input type="" name=""></td>
+    	<td><button id="show">-</button></td>
+    </tr> -->
+     </table>
+</body>
+<script type="text/javascript">
+	
+  var sn = 0;
+    y = [];
+	$(document) .ready(function()
+	{ 
+    var pp="";
+    var x = '';
+    // var y=[{"product_id":"1","product_name":"fish","price":"300"},{"product_id":"2","product_name":"meat","price":"450"}, {"product_id":"3","product_name":"bread","price":"600"},{"product_id":"4","product_name":"biscult","price":"900"},{"product_id":"5","product_name":"bean","price":"490"},{"product_id":"6","product_name":"rice","price":"700"}];
+        var jsonRes = '{ "products" : [' +
+              '{"product_id":"1","product_name":"fish","price":"300"},' +
+              '{"product_id":"2","product_name":"meat","price":"450"},' +
+             '{"product_id":"3","product_name":"bread","price":"800"},' +
+              '{"product_id":"4","product_name":"bean","price":"490"},' +
+               '{"product_id":"5","product_name":"rice","price":"600"},' +
+              '{"product_id":"6","product_name":"biscult","price":"900"} ]}';
+
+            var y = JSON.parse(jsonRes);
+    alert(jsonRes);
+
+     for( i=0; i < y.products.length; i++)
+            {
+
+              pp += "<option value = "+y.products[i]["product_id"]+">"+y.products[i]["product_name"]+"</option>";
+
+             }
+                
+            //});
+		
+   $('#add').on("click",function()
+   {
+     sn++;
+        n = "sproducts"+sn;
+    var x="<tr><td><select name="+n+" class='form-control product_id put' id="+n+" onchange='sproducts(n)' onchange='getID(n)'><option value="+sn+">Select Product name</option>"+pp+"</select></td><td><input name='product_id' id='p1"+sn+"'  class='form-control price p1'></td><td><input class='form-control' onkeyup='sproducts(n)' id='q1"+sn+"'></td><td><input class='form-control'></td><td><button class='btn btn-danger add' id='show' >-</button></td></tr>"
+
+   	// alert();
+   	$("table").append(x);
+   
+   });
+     
+ $(document).on("click","#show",function()
+	{
+		//alert();
+   	 $(this).closest('tr').remove();	
+	});
+  })
+  var selector;
+     function getID(q)
+     {     
+       selector = $('#'+q).val();
+
+     }
+     function sproducts(q)
+     {
+        var i = $('#'+q).val();
+        i--;
+        // alert();
+        //qua = prods[i].quantity;
+      pri = y.products[i]["price"];
+        alert(pri);
+        $('#p1'+sn).val(pri);
+        
+     }
+    
+      function sproduct(q)
+     {
+   //alert();
+        var i = $('#'+q).val();
+        i--;
+        
+        // pri = y.products[i]["price"];
+        // alert(y.products[i]["product_id"]);
+        // $('#p1'+sn).val(pri);
+    
+        
+     }
+ 
+	
+</script>
+</html>

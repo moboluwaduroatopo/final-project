@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php session_start();
+$connect=mysqli_connect("localhost","root","","shop_db");
+if (isset($_SESSION["adminid"])) {
+  //session_destroy();
+//header("Location: adminlogin.html");
+
+?>
  <!DOCTYPE html>
 <html lang="en">
 
@@ -58,17 +64,23 @@
             <span class="nav-link-text">ADD PRODUCT </span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="addtype.php">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">ADD Categories </span>
+          </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">ADMIN LOGIN </span>
+            <span class="nav-link-text">ADMIN LOGIN/REG </span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="adminlogin.html">Login Page</a>
+              <a href="adminlogin1.php">Login Page</a>
             </li>
             <li>
-              <a href="admin.html">Registration Page</a>
+              <a href="adminregister.php">Registration Page</a>
             </li>
             <li>
               <a href="forgot-password.php">Forgot Password Page</a>
@@ -118,10 +130,8 @@
     </div>
   </nav>
    
-    <div class="container-fluid">
-<div id="result" style="margin-left: 300px">
+<div id="result" style="margin-left: 300px" class="col-md-3">
   
-</div>
 </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -135,7 +145,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="adminlogin.html">Logout</a>
+            <a class="btn btn-primary" href="adminlogin1.php">Logout</a>
           </div>
         </div>
       </div>
@@ -186,7 +196,11 @@
  });
 });
 </script>
-
+<?php
+} else{
+  header("Location: adminlogin1.php");
+}
+?>
 </body>
 
 </html>

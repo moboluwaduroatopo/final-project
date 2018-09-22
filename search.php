@@ -5,19 +5,14 @@ if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
  $query = "
-  SELECT * FROM product_tb
+  SELECT * FROM product_tb join type using (type_id) 
   WHERE pimage LIKE '%".$search."%'
   OR product_name LIKE '%".$search."%' 
   OR price LIKE '%".$search."%' 
  
  ";
-}
-else
-{
- $query = "
-  SELECT * FROM product_tb ORDER BY productID
- ";
-}
+
+
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
@@ -25,7 +20,8 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
    
- ';
+ '
+ ;
  while($row = mysqli_fetch_array($result))
  {
   $output .= '
@@ -39,5 +35,11 @@ if(mysqli_num_rows($result) > 0)
  }
  echo $output;
 }
-
+}
+else
+{
+ $query = "
+  SELECT * FROM product_tb ORDER BY productID
+ ";
+}
 ?>
