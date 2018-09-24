@@ -19,28 +19,8 @@
     
   
 </style>
-
 <script type="text/javascript">
-  
-   $(document).ready(function()
-  {
-   // var pp="";
-    //var x = '';
-      //     $.post('Fetch.php',{x:x},function(data){
-        //    var prods = JSON.parse(data);
-          //alert(data);
-           //we are here creating an option out of pp
-         //for( i=0; i < prods.length; i++)
-           // for(i=0;i<6;i++)
-          //text += cars[i] + "<br>";
-           // {
-             // pp += "<option>"+prods[i].product_name+"</option>";
-              //pro = prods[i].price;
-             //}
 
-              // p = prods[i].price;
-              //  alert(p);
-              //  $('#p1').val(p);
 
     var sn = 0;
     prods = [];
@@ -56,27 +36,16 @@
          for( i=0; i < prods.length; i++)
             {
               pp += "<option value = "+prods[i].product_id+">"+prods[i].product_name+"</option>";
+               
              }
                 
-            //});
+            });
      $("#add").on("click",function()
       {
         sn++;
         n = "sproducts"+sn;
         
-
-        var x="<tr><td class=''> <select class='form-control put'>"
-        <?php
-
-            include"conn.php";
-            $select = mysqli_query($con, "select * from product_tb ")
-            while ($row= mysqli_fetch_array($select)) {
-           echo" <option value='".$row['product_id']."' >".$row['product_name']." </option> ";
-          ?> 
-        
-        "</select></td><td><input  placeholder='' id='p1' class='form-control p1' value='' onkeyup ='myfirst();'></td><td class='number'><input id='q1'  placeholder=''  class='form-control q1' onkeyup ='myfirst();' ></td><td><input placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
-
-        var x="<tr><td class=''> <select name="+n+" class='form-control product_id put' id="+n+" onchange='sproducts(n)' onchange='getID(n)'><option value="+sn+">Select Product name</option>"+pp+"</select></td><td><input name='qt1"+sn+"'  placeholder='' id='qt1"+sn+"' class='form-control qtyinst qt1' value='' onkeyup ='myfirst();'></td><td><input name='product_id'  placeholder='' id='p1"+sn+"' class='form-control price p1' value='' onkeyup ='myfirst();'></td><td class='number'><input name='saleqty"+sn+"' id='q1"+sn+"' onkeyup='sproducts(n)' placeholder=''  class='form-control q1 saleqty' ></td><td><input  placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
+        var x="<tr><td class=''> <select name="+n+" class='form-control product_id put' id="+n+" onchange='sproduct(n)' onchange='getID(n)'><option value="+sn+">Select Product name</option>"+pp+"</select></td><td><input name='qt"+sn+"'  placeholder='' id='qt1"+sn+"' class='form-control qtyinst qt1' value='' onkeyup ='myfirst();'></td><td><input name='product_id'  placeholder='' id='p1"+sn+"' class='form-control price p1' value='' onkeyup ='myfirst();'></td><td class='number'><input name='saleqty"+sn+"' id='q1"+sn+"' onkeyup='sproducts(n)' placeholder=''  class='form-control q1 saleqty' ></td><td><input  placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
         $("table").append(x);
         //alert();
       });
@@ -94,11 +63,11 @@
        selector = $('#'+q).val();
 
      }
-     function sproducts(q)
+     function sproduct(q)
      {
         var i = $('#'+q).val();
         i--;
-         alert();
+         //alert();
         //qua = prods[i].quantity;
         pri = prods[i].price;
         qtys=prods[i].quantity;
@@ -108,7 +77,7 @@
         
      }
 
-function sproduct(q)
+function sproducts(q)
      {
         var i = $('#'+q).val();
         i--;
@@ -116,7 +85,7 @@ function sproduct(q)
         // pri = prods[i].price;
         // $('#p1'+sn).val(pri);
 
-        if($('#q1'+sn).val()<=qua){
+        if($('#q1'+sn).val()>qua){
          //alert("sufficient");
          
         }else{
@@ -124,9 +93,6 @@ function sproduct(q)
         }
      }
 </script>
-<?php
-};
-?>
 <body>
 
   <?php include 'dashboard.php'; ?>
@@ -210,7 +176,7 @@ function sproduct(q)
 
 </body>
 <script type="text/javascript">
-  $("#salestable").delegate(".q1","keyup",function(){
+  $("#salestable").delegate(".q1","input",function(){
     var q1 = $(this);
    // var tr = $(this).parent().parent();
     var quantity= $(this).closest('tr').find('.p1').val();
@@ -218,7 +184,7 @@ function sproduct(q)
       alert("Please enter a valid quantity");
       q1.val(1);
     }else{
-      if($('#q1'+sn).val() >qua) {
+      if($('#q1'+sn).val() >= qua) {
         alert("Sorry ! This much of quantity is not available");
        q1.val(1)
       }else{
@@ -290,34 +256,4 @@ window.addEventListener("load",myFunction);
    };
   
 </script>
-<script type="text/javascript">
- $("#salestable").delegate(".put","change",function(){
-    var pid = $(this).val();
-    var tr = $(this).parent().parent();
-    $(".overlay").show();
-    $.ajax({
-      url : DOMAIN+"/includes/process.php",
-      method : "POST",
-      dataType : "json",
-      data : {getPriceAndQty:1,id:pid},
-      success : function(data){
-        tr.find(".tqty").val(data["product_stock"]);
-        tr.find(".pro_name").val(data["product_name"]);
-        tr.find(".qty").val(1);
-        tr.find(".price").val(data["product_price"]);
-        tr.find(".amt").html( tr.find(".qty").val() * tr.find(".price").val() );
-        calculate(0,0);
-      }
-    })
-  })
-
-</script>
-<?php
- if (isset($_POST["getPriceAndQty"])) {
-  $m = new Manage();
-  $result = $m->getSingleRecord("products","pid",$_POST["id"]);
-  echo json_encode($result);
-  exit();
-}
-?>
 </html>

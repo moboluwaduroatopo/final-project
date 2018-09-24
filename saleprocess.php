@@ -1,3 +1,4 @@
+
 <?php
 Class product {
 	public $connect;
@@ -6,8 +7,6 @@ Class product {
 			$this->connect=mysqli_connect("localhost","root","","shop_db");
 		}
 		function saveToDataBase($customer_name,$id,$total,$tende,$chang,$payment_type){
-			//echo "<font size=9>".$product_id."</font>";
-			//$date = '2018-08-08';
 			$key = sha1(customer_name." ".rand(1000,1000000));
 			$result=mysqli_query($this->connect, "INSERT INTO sale_tb(customer_name,staff_id,total,tende,chang,payment_type,dates,keyd)VALUES('$customer_name','$id','$total','$tende','$chang','$payment_type',now(),'$key')");
 					
@@ -25,14 +24,16 @@ Class product {
 						if(isset($_POST['sproducts'.$i])) 
                        
 						{
-		
+							
 							$pid = $_POST['sproducts'.$i];
                             $saleqty=$_POST['saleqty'.$i];
-                            $qt1=$_POST['qt1"+sn+"'.$i];
-                            $rem_qty=$qt1[$i] - $saleqty[$i];
-
+                            $qt=$_POST['qt'.$i];
+                            $rem_qty=$qt - $saleqty;
+                          
 							 $result=mysqli_query($this->connect, "INSERT INTO invoice_tb(sale_id,product_id,sale_qty)VALUES('$sid','$pid','$saleqty')");
-                           $result1s=mysql_query($this->connect, "UPDATE product_tb SET quantity='rem_qty' WHERE product_id='".$id[$i]."'");
+
+                           $result1s=mysqli_query($this->connect, "update product_tb set quantity='$rem_qty' where product_id='$pid'")or die(mysql_error($this->connect));
+          
 						}
 					}
 
