@@ -28,7 +28,7 @@ $errors=array();
 
 			}
 			if ($count > 0) {
-				header("Location:dashboard.php");
+				header("Location:index.php");
 				//$_SESSION['username'] = $usern;
                 //$_SESSION['success'] = "You are now logged in";
 				//echo "done";

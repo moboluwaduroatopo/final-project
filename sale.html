@@ -95,16 +95,16 @@ function sproducts(q)
 </script>
 <body>
 
-  <?php include 'dashboard.php'; ?>
+  
      <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Sales</li>
-      </ol>
+      </ol> -->
    <div id="margin">
 <form class="form-horizontal" method="post" action="saleprocess.php"  enctype="multipart/form-data">
       <legend style="color:#FF5500; text-align: center;">Sales</legend>
@@ -116,8 +116,8 @@ function sproducts(q)
     </div>
  <div class="col-md-6">
    <label for="exampleInputEmail1">Date</label>
-  <input id="date" name="date" type="text" placeholder="date" class="form-control input-md" value="<?php echo date("Y-d-m"); ?>" disabled="disabled">
-    </div> 
+  <input id="date" name="date" type="text" placeholder="date" class="form-control input-md"  disabled="disabled">
+</div> 
   </div>
 </div> 
     <table border="1" style="width:100%" class="table" id="salestable">

@@ -9,7 +9,7 @@ header("Location: dashboard.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Staff registration form</title>
+	<title>Admin registration form</title>
 
   <style type="text/css">
   
