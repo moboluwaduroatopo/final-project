@@ -1,128 +1,21 @@
-<!DOCTYPE HTML>
+<?php
+
+$con=mysqli_connect("localhost","root","","shop_db");
+?>
+<!DOCTYPE html>
 <html>
 <head>
-<!-- <script>
-window.onload = function () {
-
-var options = {
-	animationEnabled: true,
-	theme: "light2",
-	title: {
-		text: "Monthly Sales Data"
-	},
-	axisX: {
-		valueFormatString: "MMM"
-	},
-	axisY: {
-		prefix: "#",
-		labelFormatter: addSymbols
-	},
-	toolTip: {
-		shared: true
-	},
-	legend: {
-		cursor: "pointer",
-		itemclick: toggleDataSeries
-	},
-	data: [
-		{
-			type: "column",
-			name: "Actual Sales",
-			showInLegend: true,
-			xValueFormatString: "MMMM YYYY",
-			yValueFormatString: "N#,##0",
-			dataPoints: [
-				{ x: new Date(2017, 0), y: 20000 },
-				{ x: new Date(2017, 1), y: 25000 },
-				{ x: new Date(2017, 2), y: 30000 },
-				{ x: new Date(2017, 3), y: 70000, indexLabel: "High Renewals" },
-				{ x: new Date(2017, 4), y: 40000 },
-				{ x: new Date(2017, 5), y: 60000 },
-				{ x: new Date(2017, 6), y: 55000 },
-				{ x: new Date(2017, 7), y: 33000 },
-				{ x: new Date(2017, 8), y: 45000 },
-				{ x: new Date(2017, 9), y: 30000 },
-				{ x: new Date(2017, 10), y: 50000 },
-				{ x: new Date(2017, 11), y: 35000 }
-			]
-		},
-		{
-			type: "line",
-			name: "Expected Sales",
-			showInLegend: true,
-			yValueFormatString: "N#,##0",
-			dataPoints: [
-				{ x: new Date(2017, 0), y: 32000 },
-				{ x: new Date(2017, 1), y: 37000 },
-				{ x: new Date(2017, 2), y: 40000 },
-				{ x: new Date(2017, 3), y: 52000 },
-				{ x: new Date(2017, 4), y: 45000 },
-				{ x: new Date(2017, 5), y: 47000 },
-				{ x: new Date(2017, 6), y: 42000 },
-				{ x: new Date(2017, 7), y: 43000 },
-				{ x: new Date(2017, 8), y: 41000 },
-				{ x: new Date(2017, 9), y: 42000 },
-				{ x: new Date(2017, 10), y: 50000 },
-				{ x: new Date(2017, 11), y: 45000 }
-			]
-		},
-		{
-			type: "area",
-			name: "Profit",
-			markerBorderColor: "white",
-			markerBorderThickness: 2,
-			showInLegend: true,
-			yValueFormatString: "N#,##0",
-			dataPoints: [
-				{ x: new Date(2017, 0), y: 4000 },
-				{ x: new Date(2017, 1), y: 7000 },
-				{ x: new Date(2017, 2), y: 12000 },
-				{ x: new Date(2017, 3), y: 40000 },
-				{ x: new Date(2017, 4), y: 20000 },
-				{ x: new Date(2017, 5), y: 35000 },
-				{ x: new Date(2017, 6), y: 33000 },
-				{ x: new Date(2017, 7), y: 20000 },
-				{ x: new Date(2017, 8), y: 25000 },
-				{ x: new Date(2017, 9), y: 16000 },
-				{ x: new Date(2017, 10), y: 29000 },
-				{ x: new Date(2017, 11), y: 20000 }
-			]
-		}]
-};
-$("#chartContainer").CanvasJSChart(options);
-
-function addSymbols(e) {
-	var suffixes = ["", "K", "M", "B"];
-	var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
-
-	if (order > suffixes.length - 1)
-		order = suffixes.length - 1;
-
-	var suffix = suffixes[order];
-	return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
-}
-
-function toggleDataSeries(e) {
-	if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	} else {
-		e.dataSeries.visible = true;
-	}
-	e.chart.render();
-}
-
-
-}
-</script> -->
+	<title></title>
 </head>
-<style type="text/css">
-	#margin{
-		background-color: #f5f5f5;
-		width:80%;
-         height: 500px;
-        }
-  
-	</style>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   <script type="text/javascript" src="jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="jquery/popper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
+<script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="myscrip.js"></script>
+<style type="text/css"> 
+</style>
 <body>
 	 <?php include 'dashboard.php'; ?>
      <div class="content-wrapper">
@@ -132,46 +25,107 @@ function toggleDataSeries(e) {
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item active">dashboard</li>
       </ol>
-     <div   id="margin">
-     	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Categories</h4>
-						<p class="card-text">Here you can add new  categories</p>
-						<a href="addtype" class="btn btn-primary">Add</a>
-						<!-- <a href="manage_categories.php" class="btn btn-primary">Manage</a> -->
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Staff</h4>
-						<p class="card-text">Here you can add new staff</p>
-						<a href="staff1.php"  class="btn btn-primary">Add</a>
-						<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Products</h4>
-						<p class="card-text">Here you can add new products</p>
-						<a href="Addnewproduct.php" class="btn btn-primary">Add</a>
-						<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
-</div>
-<script src="jquery/jquery-1.11.1.min.js"></script>
-<script src="jquery/jquery.canvasjs.min.js"></script>
-</body>
-</html>
+				 <div class="row row-offcanvas row-offcanvas-right">
+      
+   <div style="margin:20px;width: 100% ">
+   	<!-- <h5 style="text-align: center;">LIST OF STAFF</h5> -->
+     <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Product Data </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Product_name</th>
+                    <th>Price</th>
+                    <th>quantity</th>
+                    <th>Date</th>
+                    <th>image</th>
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                     <th>No</th>
+                    <th>Product_name</th>
+                    <th>Price</th>
+                    <th>quantity</th>
+                    <th>Date</th>
+                    <th>image</th>
+                  </tr>
+              </tfoot>
+              <tbody>
+               
+             
+
+<?php
+$n=0;
+$view = mysqli_query($con, "select * from product_tb")or die(mysqli_error($con));
+while($r=mysqli_fetch_array($view)){
+	$n++;
+	$id=$r['product_id'];
+	$_SESSION['id']=$id;
+echo "<tr><td>". $n."</td><td>".$r['product_name']."</td><td><span>#</span>".$r['price']." </td><td>".$r['quantity']." </td><td>".$r['date']."</td><td><img src='".$r['pimage']."' width=50px height =50px /></td></tr>";
+}
+
+?> </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div></div></div></div>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Staff Data </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Surname</th>
+                    <th>Middlename</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Passport</th>
+                   
+                  </tr>
+              </thead>
+              <!-- <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Surname</th>
+                    <th>Middlename</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Passport</th>
+                   
+                  </tr>
+              </tfoot> -->
+              <tbody>
+               
+             
+
+<?php
+$n=0;
+$view = mysqli_query($con, "select * from staff_tb")or die(mysqli_error($con));
+while($r=mysqli_fetch_array($view)){
+  $n++;
+  $id=$r['staff_id'];
+  $_SESSION['id']=$id;
+echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td><td>".$r['lastname']."</td><td>".$r['email']."</td><td>".$r['username']."</td><td>".$r['password']."</td><td><img src='".$r['passport']."' width=50px height =50px</td></tr>";
+}
+
+?> </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div></div></body>

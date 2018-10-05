@@ -30,9 +30,44 @@ $con=mysqli_connect("localhost","root","","shop_db");
 				 <div class="row row-offcanvas row-offcanvas-right">
       
    <div style="margin:20px;width: 100% ">
-   	<h5 style="text-align: center;">LIST OF STAFF</h5>
-<table border="1" style="width:100%" class="table">
-	<tr><th>No</th><th>Surname</th><th>Middlename</th><th>Last name</th><th>Email</th><th>Username</th><th>Password</th><th>Passport</th><th>Edit</th><th>Delete</th></tr>
+   	<!-- <h5 style="text-align: center;">LIST OF STAFF</h5> -->
+     <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Staff Data </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Surname</th>
+                    <th>Middlename</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Passport</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Surname</th>
+                    <th>Middlename</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Passport</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+              </tfoot>
+              <tbody>
+               
+             
 
 <?php
 $n=0;
@@ -45,4 +80,9 @@ echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td
 <td><a href='deletestaff.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></td></tr>";
 }
 
-?></table></div></div></div></div></body>
+?> </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div></div></div></div></div></body>
