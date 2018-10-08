@@ -35,7 +35,7 @@
          // alert(data);
          for( i=0; i < prods.length; i++)
             {
-              pp += "<option value = "+prods[i].product_id+">"+prods[i].product_name+"</option>";
+              pp += "<option value = "+i+">"+prods[i].product_name+"</option>";
                
              }
                 
@@ -61,12 +61,13 @@
      function getID(q)
      {     
        selector = $('#'+q).val();
-
+       // alert(selector);
      }
      function sproduct(q)
      {
         var i = $('#'+q).val();
-        i--;
+        //alert(i);
+        //i--;
          //alert();
         //qua = prods[i].quantity;
         pri = prods[i].price;
@@ -120,7 +121,8 @@ function sproducts(q)
     </div> 
   </div>
 </div> 
-    <table border="1" style="width:100%" class="table" id="salestable">
+
+    <table width="100%" class="table  table-bordered" cellspacing="0" id="salestable">
      <tr >
       <th>product Name  </th>
       <th>Qty in Stock</th>

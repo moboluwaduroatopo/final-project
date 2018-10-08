@@ -65,6 +65,13 @@ while($r=mysqli_fetch_array($view)){
   </div>
 </div>
 <div class="form-group">
+  <label class="col-md-6 control-label" for="textinput" id="color">Quantity</label>  
+  <div class="col-md-12">
+  <input id="price" name="price" type="price" class="form-control input-md" value= <?php echo $r['quantity'] ?>  >
+    
+  </div>
+</div>
+<div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">product file</label>  
   <div class="col-md-12">
   <input id="file" name="file" type="file"  class="form-control input-md" accept="image/* " value=<?php echo $r['pimage'] ?> >
@@ -98,9 +105,9 @@ while($r=mysqli_fetch_array($view)){
     <button style="width: 100%" id="singlebutton"  name="submit" class="btn btn-primary button1">save</button>
   </div>
 </div>
- <p style="text-align: right;">
+<!--  <p style="text-align: right;">
      <a href="Homepage.html" class="" style="">Home page</a>
-    </p>
+    </p> -->
     <p style="text-align: right;">
      <a href="Addnewproduct.php" class="" style="">Add new product</a>
     </p>

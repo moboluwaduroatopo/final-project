@@ -28,20 +28,33 @@ $con=mysqli_connect("localhost","root","","shop_db");
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">All Receipt</li>
+        <li class="breadcrumb-item active">All sales</li>
       </ol>
    <div style="width: 90%;height: 100px">
 <div class="row text-center">
 					<div class="col-md-12">
-						<h4 class="font-weight-bold">All Receipt</h4>
+						<h4 class="font-weight-bold">All sales</h4>
 						<hr/>
 					</div></div>
-	<table  style="width:60%;margin-left: 100px" class="table">
-<div class="row">
-
+	<!-- <table  style="width:60%;margin-left: 100px" class="table">
+<div class="row"> -->
+ <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Staff Data </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  
+              </thead>
+              <tfoot>
+                  
+              </tfoot>
+              <tbody>
+               
 <?php
 //$tid= $_GET['tid'];
-$view = mysqli_query($con, "select * from  invoice_tb ")or die(mysqli_error($con));
+$view = mysqli_query($con, "select * from  invoice_tb join sale_tb using (sales_id)join product_tb using (product_id) join staff_tb using (staff_id)")or die(mysqli_error($con));
 $counter = 0;
 while($r=mysqli_fetch_array($view)){
 
@@ -52,14 +65,14 @@ while($r=mysqli_fetch_array($view)){
 echo "
 <tr><td>".$r['dates']."</td></tr>
 <tr><td>Customer name</td><td>".$r['customer_name']."</td></tr>
-<tr><td><p>Receipt No</p></td><td>".$r['sale_id']."</td></tr>
+<tr><td><p>Receipt No</p></td><td>".$r['invoice_id']."</td></tr>
  <tr><td><p>Payment Mode</p></td><td>".$r['payment_type']."</td></tr>  	
  <tr><td> ".$r['product_name']."</td><td>".$r['price']."</td></tr>
  <tr><td>Total</td><td>".$r['total']."</td></tr>
  <tr><td>Tendering</td><td>".$r['tende']."</td></tr>
  
- <tr><td>Issued by</td><td>".$r['staff_name']."</td></tr>
- <tr ><td colspan='2'><button>shdj</button></td></tr>";
+ <tr><td>Issued by</td><td>".$r['surname']." ".$r['middlename']."</td></tr>
+ <tr ><td colspan='2'><button class='btn btn-info'>print</button></td></tr>";
 $counter++;
 	if($counter == 3)
 	{
@@ -69,4 +82,9 @@ $counter++;
 
 }
 
-?></div></table></div></div></body></html>
+?></tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div></div></div></div></div></body>
