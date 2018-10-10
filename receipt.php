@@ -65,9 +65,10 @@ while($r=mysqli_fetch_array($view)){
 echo "
 <tr><td>".$r['dates']."</td></tr>
 <tr><td>Customer name</td><td>".$r['customer_name']."</td></tr>
-<tr><td><p>Receipt No</p></td><td>".$r['invoice_id']."</td></tr>
- <tr><td><p>Payment Mode</p></td><td>".$r['payment_type']."</td></tr>  	
- <tr><td> ".$r['product_name']."</td><td>".$r['price']."</td></tr>
+<tr><td><p>Receipt No</p></td><td>".$r['sales_id']."</td></tr>
+ <tr><td><p>Payment Mode</p></td><td>".$r['payment_type']."</td></tr> 
+
+ <tr><td>".$r['sale_qty']." ".$r['product_name']."</td><td>".$r['price']."</td></tr>
  <tr><td>Total</td><td>".$r['total']."</td></tr>
  <tr><td>Tendering</td><td>".$r['tende']."</td></tr>
  

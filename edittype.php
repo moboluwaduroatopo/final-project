@@ -1,4 +1,4 @@
-  <?php include 'dashboard.php'; ?>
+<?php include 'dashboard.php'; ?>
 <?php 
 
 $con=mysqli_connect("localhost","root","","shop_db");

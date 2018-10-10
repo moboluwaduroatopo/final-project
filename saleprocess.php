@@ -27,10 +27,11 @@ Class product {
 							
 							$pid = $_POST['sproducts'.$i];
                             $saleqty=$_POST['saleqty'.$i];
+                            $sale_tota=$_POST['sale_tota'.$i];
                             $qt=$_POST['qt'.$i];
                             $rem_qty=$qt - $saleqty;
                           
-							 $result=mysqli_query($this->connect, "INSERT INTO invoice_tb(sale_id,product_id,sale_qty)VALUES('$sid','$pid','$saleqty')");
+						$result1=mysqli_query($this->connect, "INSERT INTO invoice_tb(sales_id,product_id,sale_qty,sale_total)VALUES('$sid','$pid','$saleqty','$sale_tota')");
 
                            $result1s=mysqli_query($this->connect, "update product_tb set quantity='$rem_qty' where product_id='$pid'")or die(mysql_error($this->connect));
           

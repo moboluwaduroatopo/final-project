@@ -45,7 +45,7 @@
         sn++;
         n = "sproducts"+sn;
         
-        var x="<tr><td class=''> <select name="+n+" class='form-control product_id put' id="+n+" onchange='sproduct(n)' onchange='getID(n)'><option value="+sn+">Select Product name</option>"+pp+"</select></td><td><input name='qt"+sn+"'  placeholder='' id='qt1"+sn+"' class='form-control qtyinst qt1' value='' onkeyup ='myfirst();'></td><td><input name='product_id'  placeholder='' id='p1"+sn+"' class='form-control price p1' value='' onkeyup ='myfirst();'></td><td class='number'><input name='saleqty"+sn+"' id='q1"+sn+"' onkeyup='sproducts(n)' placeholder=''  class='form-control q1 saleqty' ></td><td><input  placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
+        var x="<tr><td class=''> <select name="+n+" class='form-control product_id put' id="+n+" onchange='sproduct(n)' onchange='getID(n)'><option value="+sn+">Select Product name</option>"+pp+"</select></td><td><input name='qt"+sn+"'  placeholder='' id='qt1"+sn+"' class='form-control qtyinst qt1' value='' onkeyup ='myfirst();'></td><td><input name='product_id'  placeholder='' id='p1"+sn+"' class='form-control price p1' value='' onkeyup ='myfirst();'></td><td class='number'><input name='saleqty"+sn+"' id='q1"+sn+"' onkeyup='sproducts(n)' placeholder=''  class='form-control q1 saleqty' ></td><td><input name='sale_tota"+sn+"'  placeholder='' id='t1' class='form-control t1'></td><td><button class='btn btn-danger' class='del' id='del'>-</button></td></tr>";
         $("table").append(x);
         //alert();
       });
