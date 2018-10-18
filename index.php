@@ -55,7 +55,7 @@ $sale3= mysqli_query($con, "SELECT sum(od.sale_total) as two_day from sale_tb o 
 
   //echo $r['last_1_month'];
   $_SESSION['sales']=$r['this_year'];
-  echo "         <div class='col-xl-4 col-sm-6 mb-4'>
+  echo "         <div class='col-xl-3 col-sm-6 mb-3'>
           <div class='card text-white bg-primary o-hidden h-100'>
             <div class='card-body'>
               <div class='card-body-icon'>
@@ -73,32 +73,11 @@ $sale3= mysqli_query($con, "SELECT sum(od.sale_total) as two_day from sale_tb o 
         </div>
       ";
  };
-  while($r=mysqli_fetch_array($sale1)){
-
-  //echo $r['last_1_month'];
-  $_SESSION['sales']=$r['a_day'];
-  echo "   <div class='col-xl-4 col-sm-6 mb-4'>
-          <div class='card text-white bg-primary o-hidden h-100'>
-            <div class='card-body'>
-              <div class='card-body-icon'>
-                <i class='fa fa-fw fa-comments'></i>
-              </div>
-              <div class='mr-5 text-centre' >A Day Sales</div>
-            </div>
-            <a class='card-footer text-white clearfix small z-1' href='#'>
-              <span class='float-left'>#".$r['a_day']."</span>
-              <span class='float-right'>
-                <i class='fa fa-angle-right'></i>
-              </span>
-            </a>
-          </div>
-        </div>";
- };
- while($r=mysqli_fetch_array($sale2)){
+  while($r=mysqli_fetch_array($sale2)){
 
   //echo $r['last_1_month'];
   $_SESSION['sales']=$r['this_week'];
-  echo "  <div class='col-xl-4 col-sm-6 mb-4'>
+  echo "  <div class='col-xl-3 col-sm-6 mb-3'>
           <div class='card text-white bg-primary o-hidden h-100'>
             <div class='card-body'>
               <div class='card-body-icon'>
@@ -116,11 +95,33 @@ $sale3= mysqli_query($con, "SELECT sum(od.sale_total) as two_day from sale_tb o 
         </div>";
  };
 
+  while($r=mysqli_fetch_array($sale1)){
+
+  //echo $r['last_1_month'];
+  $_SESSION['sales']=$r['a_day'];
+  echo "   <div class='col-xl-3 col-sm-6 mb-3'>
+          <div class='card text-white bg-primary o-hidden h-100'>
+            <div class='card-body'>
+              <div class='card-body-icon'>
+                <i class='fa fa-fw fa-comments'></i>
+              </div>
+              <div class='mr-5 text-centre' >A Day Sales</div>
+            </div>
+            <a class='card-footer text-white clearfix small z-1' href='#'>
+              <span class='float-left'>#".$r['a_day']."</span>
+              <span class='float-right'>
+                <i class='fa fa-angle-right'></i>
+              </span>
+            </a>
+          </div>
+        </div>";
+ };
+
   while($r=mysqli_fetch_array($sale3)){
 
   //echo $r['last_1_month'];
   $_SESSION['sales']=$r['two_day'];
-  echo "  <div class='col-xl-4 col-sm-6 mb-4'>
+  echo "  <div class='col-xl-3 col-sm-6 mb-3'>
           <div class='card text-white bg-primary o-hidden h-100'>
             <div class='card-body'>
               <div class='card-body-icon'>
