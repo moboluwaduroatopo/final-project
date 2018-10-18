@@ -1,5 +1,5 @@
 
-<?php
+<?php session_start();
 Class product {
 	public $connect;
 		
@@ -12,11 +12,15 @@ Class product {
 					
 				if ($result) 
 				{
-					echo "SAVED ";
+					// $return = "Order saved";
+					// 	include"sale.php";
+					
+					//echo "SAVED ";
 					$fetchID = mysqli_query($this->connect,"select sales_id from sale_tb where keyd = '$key'");
 					while($fid = mysqli_fetch_array($fetchID))
 					{
-						$sid = $fid['sales_id'];
+						//$sid = $fid['sales_id'];
+						$_SESSION['id']=$fid['sales_id'];
 					}
 					for($i=0;$i<=10; $i++)
 					{
@@ -31,13 +35,13 @@ Class product {
                             $qt=$_POST['qt'.$i];
                             $rem_qty=$qt - $saleqty;
                           
-						$result1=mysqli_query($this->connect, "INSERT INTO invoice_tb(sales_id,product_id,sale_qty,sale_total)VALUES('$sid','$pid','$saleqty','$sale_tota')");
+						$result1=mysqli_query($this->connect, "INSERT INTO invoice_tb(sales_id,product_id,sale_qty,sale_total)VALUES('$_SESSION[id]','$pid','$saleqty','$sale_tota')");
 
                            $result1s=mysqli_query($this->connect, "update product_tb set quantity='$rem_qty' where product_id='$pid'")or die(mysql_error($this->connect));
           
 						}
 					}
-
+            	header("Location:print.php");
 				}
 				else
 				{

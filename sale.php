@@ -1,4 +1,4 @@
-
+ <?php include 'dashboard.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +81,7 @@
 function sproducts(q)
      {
         var i = $('#'+q).val();
-        i--;
+       // i--;
         qua = prods[i].quantity;
         // pri = prods[i].price;
         // $('#p1'+sn).val(pri);
@@ -96,7 +96,7 @@ function sproducts(q)
 </script>
 <body>
 
-  <?php include 'dashboard.php'; ?>
+ 
      <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -107,8 +107,9 @@ function sproducts(q)
         <li class="breadcrumb-item active">Sales</li>
       </ol>
    <div id="margin">
-<form class="form-horizontal" method="post" action="saleprocess.php"  enctype="multipart/form-data">
+<form class="form-horizontal" id="get_order_data" method="post" action="saleprocess.php"  enctype="multipart/form-data">
       <legend style="color:#FF5500; text-align: center;">Sales</legend>
+        
       <div class="form-group">
     <div class="form-row">
    <div class="col-md-6">
@@ -160,13 +161,12 @@ function sproducts(q)
   </div>
 </div> 
  </div>
-<div class="form-group">
-  <div class="col-md-12" >
-    <button id="saveproduct" style="width: 100%" name="submit" class="btn btn-success button1">Save</button>
+ <div class='form-group'>
+  <div class='col-md-12' >
+    <button id='saveproduct' style='width: 100%' name='submit' class='btn btn-success button1'>Save</button>
   </div>
 </div>
-<button onclick="printsales()" class="fa fa-print btn btn-success" id="print">Print</button>
-
+<button onclick='rintsales()' style='width: 100%' class='fa fa-print btn btn-success print' id='print'>Print</button>
 <p style="text-align: right;">
      <a href="Addnewproduct.php" class="" style="">Add New Product</a>
     </p> 
@@ -184,11 +184,11 @@ function sproducts(q)
     var price= $(this).closest('tr').find('.p1').val();
     if (isNaN(q1.val())) {
       alert("Please enter a valid quantity");
-      q1.val();
+      q1.val(1);
     }else{
       if(q1.val() > qua) {
         alert("Sorry ! This much of quantity is not available");
-       q1.val()
+       q1.val(1)
       }else{
        // tr.find("#t1").html(q1.val() * tr.find(".p1").val());
        // calculate(0,0);
@@ -247,8 +247,12 @@ function calculate(){
     };
     $(document).ready(function(){
          $('#print').hide();
- });
-     
+         // $('.button1').click(function(){
+         //  $('#saveproduct').hide();
+         //  $('.print').show();
+         // })
+        
+  })
         
 window.addEventListener("load",myFunction);
  function myFunction(){

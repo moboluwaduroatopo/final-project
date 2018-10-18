@@ -1,6 +1,12 @@
-<?php
-
+<?php 
 $con=mysqli_connect("localhost","root","","shop_db");
+$result = mysqli_query($con, "select * from product_tb")or die(mysqli_error($con));
+$chart_data = '';
+while($row = mysqli_fetch_array($result))
+{
+ $chart_data .= "{ year:'".$row["year"]."', profit:".$row["profit"].", price:".$row["price"].", sale:".$row["sale"]."}, ";
+}
+$chart_data = substr($chart_data, 0, -2);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +20,10 @@ $con=mysqli_connect("localhost","root","","shop_db");
 <link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
 <script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="myscrip.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <style type="text/css"> 
 </style>
 <body>
@@ -31,6 +41,10 @@ $con=mysqli_connect("localhost","root","","shop_db");
       
    <div style="margin:20px;width: 100% ">
    	<!-- <h5 style="text-align: center;">LIST OF STAFF</h5> -->
+  <!-- <div class="containe" style="width:800px;"> -->
+   <h2 align="center">Sale Record Chart </h2>  
+   <div id="chart"></div>
+ <!--  </div> -->
      <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i>Product Data </div>
@@ -43,7 +57,7 @@ $con=mysqli_connect("localhost","root","","shop_db");
                     <th>Product_name</th>
                     <th>Price</th>
                     <th>quantity</th>
-                    <th>Date</th>
+                    <th>year</th>
                     <th>image</th>
                   </tr>
               </thead>
@@ -53,7 +67,7 @@ $con=mysqli_connect("localhost","root","","shop_db");
                     <th>Product_name</th>
                     <th>Price</th>
                     <th>quantity</th>
-                    <th>Date</th>
+                    <th>year</th>
                     <th>image</th>
                   </tr>
               </tfoot>
@@ -68,7 +82,7 @@ while($r=mysqli_fetch_array($view)){
 	$n++;
 	$id=$r['product_id'];
 	$_SESSION['id']=$id;
-echo "<tr><td>". $n."</td><td>".$r['product_name']."</td><td><span>#</span>".$r['price']." </td><td>".$r['quantity']." </td><td>".$r['date']."</td><td><img src='".$r['pimage']."' width=50px height =50px /></td></tr>";
+echo "<tr><td>". $n."</td><td>".$r['product_name']."</td><td><span>#</span>".$r['price']." </td><td>".$r['quantity']." </td><td>".$r['year']."</td><td><img src='".$r['pimage']."' width=50px height =50px /></td></tr>";
 }
 
 ?> </tbody>
@@ -129,3 +143,14 @@ echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td
         </div>
         
       </div></div></body>
+      <script>
+Morris.Bar({
+ element : 'chart',
+ data:[<?php echo $chart_data; ?>],
+ xkey:'year',
+ ykeys:['profit', 'price', 'sale'],
+ labels:['Profit', 'price', 'Sale'],
+ hideHover:'auto',
+ stacked:true
+});
+</script>
