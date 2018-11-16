@@ -71,10 +71,10 @@ $con=mysqli_connect("localhost","root","","shop_db");
 
 <?php
 $n=0;
-$view = mysqli_query($con, "select * from staff_tb")or die(mysqli_error($con));
+$view = mysqli_query($con, "select * from admin where user_type='user' ")or die(mysqli_error($con));
 while($r=mysqli_fetch_array($view)){
 	$n++;
-	$id=$r['staff_id'];
+	$id=$r['admin_id'];
 	$_SESSION['id']=$id;
 echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td><td>".$r['lastname']."</td><td>".$r['email']."</td><td>".$r['username']."</td><td>".$r['password']."</td><td><img src='".$r['passport']."' width=50px height =50px</td><td><a href='edit.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></td>
 <td><a href='deletestaff.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></td></tr>";
@@ -83,6 +83,6 @@ echo "<tr><td>". $n."</td><td>".$r['surname']."</td><td>".$r['middlename']."</td
 ?> </tbody>
             </table>
           </div>
-        </div>
-        
+        </div >
+      
       </div></div></div></div></div></body>

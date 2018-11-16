@@ -1,3 +1,27 @@
+<?php 
+    error_reporting(0);
+    if($_POST['submit']=='Send') {
+        //keep it inside
+        $email=$_POST['email'];
+        $con=mysqli_connect("localhost","root","","shop_db");
+        // Check connection
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+        $query = mysqli_query($con,"select * from  admin where email='$email'") or die(mysqli_error($con)); 
+
+        $numrows = $query->num_rows();                                  
+
+        if ($numrows == 1) {  
+            $code=rand(100,999);
+            $message='You activation link is: http://localhost/CRGSFAS/forgot-password.php?email=$email&code=$code';
+            mail($email, "Subject Goes Here", $message);
+            echo 'Email sent';
+        } else {
+            echo 'No user exist with this email id';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Forget Password</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -25,15 +49,15 @@
           <h4>Forgot your password?</h4>
           <p>Enter your email address and we will send you instructions on how to reset your password.</p>
         </div>
-        <form>
+        <form action="forgot-password.php" method="post">
           <div class="form-group">
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
+            <input class="form-control" id="exampleInputEmail1" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address">
           </div>
-          <a class="btn btn-primary btn-block" href="adminlogin.html">Reset Password</a>
+           <input class="btn btn-primary btn-block" type="submit" name="submit" value="Send">
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="admin.html">Register an Account</a>
-          <a class="d-block small" href="adminlogin.html">Login Page</a>
+          <a class="d-block small mt-3" href="adminregister.php">Register an Account</a>
+          <a class="d-block small" href="adminlogin1.php">Login Page</a>
         </div>
       </div>
     </div>

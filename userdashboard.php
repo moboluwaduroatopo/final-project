@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php session_start();
+$connect=mysqli_connect("localhost","root","","shop_db");
+if (isset($_SESSION["adminid"])) {
+  //session_destroy();
+//header("Location: adminlogin.html");
+
+?>
  <!DOCTYPE html>
 <html lang="en">
 
@@ -35,29 +41,45 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="dashboard.php">
+          <a class="nav-link" href="">
             <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+            <span class="nav-link-text" id="thiss">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text" id="this">ADD NEW USER</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="staffview.php">
+          <a class="nav-link" href="">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">STAFF LIST</span>
+            <span class="nav-link-text" id="list">STAFF LIST</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text" id="product">ADD PRODUCT </span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text" id="cat">ADD Categories </span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">STAFF LOGIN </span>
+            <span class="nav-link-text">USER LOGIN</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="stafflogin.html">Login Page</a>
+              <a href="user.php">Login Page</a>
             </li>
-            <li>
-              <a href="staff1.html">Registration Page</a>
-            </li>
+          
             <li>
               <a href="forgot-password.php">Forgot Password Page</a>
             </li>
@@ -65,15 +87,21 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="staffpro.php">
+          <a class="nav-link" href="">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">PRODUCT LIST</span>
+            <span class="nav-link-text" id="lists">PRODUCT LIST</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text" id="report">SALES REPORT</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="sale.php">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">SALES</span>
+            <span class="nav-link-text">SALES GENERATE</span>
           </a>
         </li>
       </ul>
@@ -106,8 +134,8 @@
     </div>
   </nav>
    
-    <div class="container-fluid">
-<div id="result" style="margin-left: 300px"></div>
+<div id="result" style="margin-left: 300px" class="col-md-3">
+  
 </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -121,7 +149,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="stafflogin.html">Logout</a>
+            <a class="btn btn-primary" href="user.php">Logout</a>
           </div>
         </div>
       </div>
@@ -172,7 +200,37 @@
  });
 });
 </script>
-
+<?php
+} else{
+  header("Location: user.php");
+}
+?>
+<script type="text/javascript">
+   $(document).ready(function(){
+         //$('#print').hide();
+         $('#thiss').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+        $('#this').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+         $('#list').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+          $('#product').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+           $('#lists').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+            $('#report').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+             $('#cat').click(function(){
+          alert('Please Login as admin , so that you can have access to it ');
+         })
+  })
+</script>
 </body>
 
 </html>

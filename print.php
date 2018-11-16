@@ -2,7 +2,7 @@
 $con=mysqli_connect("localhost","root","","shop_db");
 //$_SESSION['id'] = $_GET['id'];
  $_SESSION['id'];
-$sale= mysqli_query($con, "select * from sale_tb join staff_tb using (staff_id) where sales_id='$_SESSION[id]'");
+$sale= mysqli_query($con, "select * from sale_tb join admin using (admin_id) where sales_id='$_SESSION[id]'");
 $invoice = mysqli_query($con, "select * from invoice_tb join product_tb using (product_id) where sales_id = '$_SESSION[id]'");
 require("fpdf/fpdf.php");
 $pdf = new FPDF('P','mm','A4');
@@ -39,7 +39,7 @@ $pdf->Cell(50,10,": ".$s["chang"],0,1);
 $pdf->Cell(50,10,"Issue By",0,0);
 $pdf->Cell(20,10,": ".$s["surname"],0,0);
 $pdf->Cell(0,10," ".$s["middlename"],0,1);
-$pdf->Cell(190,10,"My Appreciation to all my tutors and my supervisors ",0,1,"C");
+$pdf->Cell(190,10,"My Appreciation to all my tutors, my supervisors and my boss at SQI ",0,1,"C");
 $pdf->Cell(190,10,"Thank you so much  ",0,1,"C");
 //echo $s["total"]." ".$s["surname"];
 }

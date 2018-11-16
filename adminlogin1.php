@@ -46,13 +46,21 @@ header("Location: dashboard.php");
     
   </div>
 </div>
-
+  <div class="contact100-form-checkbox text-white">
+            Select user type:<select class="form-control" name="user_type">
+                      <option value="admin" >admin</option>
+            <option value="user">user</option>
+ 
+                 </select>
+        
+          </div>
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-12">
     <button id="singlebutton" style="width: 100%" name="submit" class="btn btn-primary button1">log in</button>
   </div>
 </div>
+
  <div class="text-center">
           <a class="d-block small mt-3" href="admin.html">Register an Account</a>
           <a class="d-block small" href="forgot-password.php">Forgot Password?</a>

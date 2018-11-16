@@ -8,12 +8,12 @@
 			$this->connect=mysqli_connect("localhost", "root", "", "shop_db");
 		}
 			function fetchProducts(){
-			$stmt = mysqli_query($this->connect,"SELECT * FROM staff_tb");
+			$stmt = mysqli_query($this->connect,"SELECT * FROM admin where user_type='user'");
 			echo("<select class='form-control' name='id' id='id'>");
 			while ($row=mysqli_fetch_assoc($stmt)) {
 				$_SESSION['name'] =$row['surname'];
 			    $_SESSION['middle']=$row['middlename'];
-				echo("<option value=".$row["staff_id"].">".$_SESSION['name']." ".$_SESSION['middle']."</option>");
+				echo("<option value=".$row["admin_id"].">".$_SESSION['name']." ".$_SESSION['middle']."</option>");
 			}
 			echo("</select>");
 			

@@ -14,7 +14,7 @@
 	
 </style>
 <body>
-    	 <?php include 'dashboard.php'; ?>
+     <?php include 'dashboard.php'; ?>
      <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -24,10 +24,10 @@
         </li>
         <li class="breadcrumb-item active">My Product</li>
       </ol>
-        <div >
+        <div>
         <div class="row text-center">
 					<div class="col-md-12" style="margin-top: ">
-						<h4 class="font-weight-bold">Best Product</h4>
+						<h4 class="font-weight-bold">Best Product Type</h4>
 						<hr/>
 					</div>
 					<?php

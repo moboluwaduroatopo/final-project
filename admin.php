@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $errors=array();
@@ -18,7 +19,7 @@ $errors=array();
 			if (isset($_POST['username']) AND isset($_POST['password'])) {
 				$username = $_POST['username'];
                 $password=$_POST['password'];
-			$login=mysqli_query($this->connection, "SELECT * FROM admin Where username='$username' and password='$password'");
+			$login=mysqli_query($this->connection, "SELECT * FROM admin Where username='$username' and password='$password' and user_type='$user_type'");
 			$count=mysqli_num_rows($login);
 			while ($row=mysqli_fetch_array($login)) {
 			$_SESSION['adminid']=$row['admin_id'];
@@ -27,14 +28,14 @@ $errors=array();
 			$_SESSION['pass'] = $row['passport'];
 
 			}
-			if ($count > 0) {
+			if ($user_type=="admin") {
 				header("Location:index.php");
 				//$_SESSION['username'] = $usern;
                 //$_SESSION['success'] = "You are now logged in";
 				//echo "done";
 			}else{
-				echo"failed".mysqli_error($this->connection);
-				//header("Location: adminlogin1.php");
+				//echo"failed".mysqli_error($this->connection);
+				header("Location: userindex.php");
 				//echo ("Not Found". mysqli_error($this->connection));
 			}
 			}

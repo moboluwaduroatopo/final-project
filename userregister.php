@@ -1,11 +1,14 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title> registration form</title>
-	<style type="text/css">
-  
+  <title>Staff registration form</title>
+  <style type="text/css">
+    #color{
+      color: red
+    }
+   
   </style>
+
 </head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -13,15 +16,25 @@
 <script type="text/javascript" src="jquery/popper.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
 <script type="text/javascript" src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
-<body class="bg-dark">
-   <div id="form2" class="container" style="width: 50% ">
-   <div class="card card-login mx-auto mt-5">
-      <div class="card-header">ADMIN REGISTER FORM </div>
-      <div class="card-body">
+<body >
+ <?php include 'dashboard.php'; ?>
+     <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Register Staff</li>
+      </ol>
+      <!-- Icon Cards-->
       
-<form class="form-horizontal" method="post" action="adminlogin.php" enctype="multipart/form-data">
+ <div id="form2"  style=" background-color: #f5f5f5;width: 80%;height: 800px; ">
+  <legend style="text-align: center;">USER REGISTER FORM</legend>
+<form class="form-horizontal" method="post" action="userprocess.php" enctype="multipart/form-data">
+
 <fieldset>
-  <span style="color: white;margin-left: 150px;background-color: red;width: 30%;height: 50px"><?php if(isset($return)){ echo $return;} ?></span>
+<span style="color: white;margin-left: 150px;background-color: red;width: 30%;height: 50px"><?php if(isset($return)){ echo $return;} ?></span>
 <div class="form-group">
     <div class="form-row">
    <div class="col-md-6">
@@ -42,6 +55,9 @@
      <label for="exampleInputEmail1">Email address</label>
   <input id="email" name="email" type="email" placeholder="email" class="form-control input-md" required="">
 </div>
+<!-- //<?php 
+
+//echo $msg?> -->
 <div class="form-group">
    <label for="exampleInputEmail1">Username</label>
   <input id="username" name="username" type="username" placeholder="username" class="form-control input-md" required="">
@@ -49,6 +65,17 @@
 <div class="form-group"> 
    <label for="exampleInputEmail1">Password</label>
   <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+</div>
+<div class="form-group"> 
+   <label for="exampleInputEmail1">Usertype</label>
+ <select name="usertype" class="form-control">
+   <option>
+     Admin
+   </option>
+     <option>
+     User
+   </option>
+ </select>
 </div>
 <div class="form-group"> 
   <div class="col-md-12">
@@ -62,12 +89,14 @@
   </div>
 </div>
  <div class="text-center">
-          <a class="d-block small mt-3" href="adminlogin1.php">login</a>
+          <a class="d-block small mt-3" href="user.php">login</a>
           <a class="d-block small" href="forgot-password.php">Forgot Password?</a>
         </div>
 
 </fieldset>
 </form>
+</div>
+</div>
 </div>
 </body>
 </html>

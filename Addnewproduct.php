@@ -51,23 +51,33 @@ if (!isset($_SESSION["adminid"])) {
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">New product</label>  
   <div class="col-md-12">    
-  <input id="Nproduct" name="product" type="New product" placeholder="New product" class="form-control input-md" required="">
+  <input id="Nproduct" name="product" type="New product" placeholder="Name of the new product" class="form-control input-md" required="">
     
   </div>
 </div>
 <div class="form-group">
-  <label class="col-md-6 control-label" for="textinput" id="color">Price</label>  
-  <div class="col-md-12">
-  <input id="price" name="price" type="price" placeholder="price" class="form-control input-md" required="">
-    
+  <label class="col-md-6 control-label" for="textinput" id="color">sale</label>  
+  <div class="col-md-12" onkeyup="first()">
+  <input id="sale" name="sale" type="price" placeholder="sale" class="form-control input-md" required="">
+    </div>
   </div>
+<div class="form-group">
+  <label class="col-md-6 control-label" for="textinput" id="color">Price</label>  
+  <div class="col-md-12" onkeyup="first()">
+  <input id="price" name="price" type="price" placeholder="price"  class="form-control input-md" required="">
+    </div>
 </div>
+<div class="form-group" onkeyup="first()">
+  <label class="col-md-6 control-label" for="textinput" id="color">Profit</label>  
+  <div class="col-md-12">
+  <input id="profit" name="profit" type="profit" placeholder="profit" class="form-control input-md" required="">
+   </div> 
+  </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">Quantity</label>  
   <div class="col-md-12">
   <input id="price" name="quan" type="quan" placeholder="Quantity" class="form-control input-md" required="">
-    
-  </div>
+    </div>
 </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">product file</label>  
@@ -113,7 +123,18 @@ if (!isset($_SESSION["adminid"])) {
 </div>
 </div>
 </div>
+<script type="text/javascript">
+   function first() {
+       
+     
+        var pri=document.getElementById('price').value;
+        var sal=document.getElementById('sale').value ;
+        var Pro=document.getElementById('profit');
+        Pro.value=  pri - sal;
+         var c = parseInt(pri) - parseInt(sal) ;
 
+    };
+</script>
 
 </body>
 </html>

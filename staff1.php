@@ -31,7 +31,7 @@
       <!-- Icon Cards-->
       
  <div id="form2"  style=" background-color: #f5f5f5;width: 80%;height: 800px; ">
-  <legend style="text-align: center;">STAFF REGISTER FORM</legend>
+  <legend style="text-align: center;">USER REGISTER FORM</legend>
 <form class="form-horizontal" method="post" action="staff.php" enctype="multipart/form-data">
 
 <fieldset>
@@ -68,6 +68,17 @@
   <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
 </div>
 <div class="form-group"> 
+   <label for="exampleInputEmail1">Password</label>
+ <select name="usertype" class="form-control">
+   <option>
+     Admin
+   </option>
+     <option>
+     User
+   </option>
+ </select>
+</div>
+<div class="form-group"> 
   <div class="col-md-12">
   <input id="passport" name="ppt" type="file" placeholder="" class="form-control input-md" accept="image/* " required="">
   </div>
@@ -79,7 +90,7 @@
   </div>
 </div>
  <div class="text-center">
-          <a class="d-block small mt-3" href="stafflogin.html">login</a>
+          <a class="d-block small mt-3" href="user.php">login</a>
           <a class="d-block small" href="forgot-password.php">Forgot Password?</a>
         </div>
 

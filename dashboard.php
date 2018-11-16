@@ -47,15 +47,15 @@ if (isset($_SESSION["adminid"])) {
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="staff1.php">
+          <a class="nav-link" href="userregister.php">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">ADD NEW STAFF</span>
+            <span class="nav-link-text">ADD NEW USER</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="viewlist.php">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">STAFF LIST</span>
+            <span class="nav-link-text">USER LIST</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
@@ -67,21 +67,19 @@ if (isset($_SESSION["adminid"])) {
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="addtype.php">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">ADD Categories </span>
+            <span class="nav-link-text">ADD CATEGORIES </span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">ADMIN LOGIN/REG </span>
+            <span class="nav-link-text">USER LOGIN</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="adminlogin1.php">Login Page</a>
+              <a href="user.php">Login Page</a>
             </li>
-            <li>
-              <a href="adminregister.php">Registration Page</a>
-            </li>
+          
             <li>
               <a href="forgot-password.php">Forgot Password Page</a>
             </li>
@@ -95,9 +93,15 @@ if (isset($_SESSION["adminid"])) {
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="report.php">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">SALES REPORT</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="sale.php">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">SALES</span>
+            <span class="nav-link-text">SALES GENERATE</span>
           </a>
         </li>
       </ul>
@@ -145,7 +149,7 @@ if (isset($_SESSION["adminid"])) {
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="adminlogin1.php">Logout</a>
+            <a class="btn btn-primary" href="user.php">Logout</a>
           </div>
         </div>
       </div>
@@ -198,7 +202,7 @@ if (isset($_SESSION["adminid"])) {
 </script>
 <?php
 } else{
-  header("Location: adminlogin1.php");
+  header("Location: user.php");
 }
 ?>
 </body>
