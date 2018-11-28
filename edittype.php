@@ -46,7 +46,7 @@ while($r=mysqli_fetch_array($view)){
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">New Categories</label>  
   <div class="col-md-12">    
-  <input id="Nproduct" name="type_name" type="New product" placeholder="New categories" value= <?php echo $r['type_name'] ?> class="form-control input-md" required="">
+  <input id="Nproduct" name="type_name" type="New product" placeholder="New categories" value="<?php echo $r['type_name'] ?>" class="form-control input-md" required="">
     
   </div>
 </div>

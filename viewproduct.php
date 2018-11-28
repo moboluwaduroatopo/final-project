@@ -54,7 +54,7 @@ echo "<div class='col-md-4'>
 <div class='card-block'>
 <h4 id='it'>".$r['product_name']."</h4>
 <p id='it'><span>#</span>".$r['price']." </p>
-<p id='it'><span><a  class='' href='updateproduct1.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></span>
+<p id='it'><span><a  class='' href='updateproduct.php?id=".$id."'><button class='btn btn-success'>Edit</button></a></span>
 <span><a href='deletefresh.php?id=".$id."'><button class='btn btn-success'>Delete</button></a></span></p>
 </div>
 </div>

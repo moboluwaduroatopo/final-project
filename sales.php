@@ -1,4 +1,4 @@
-
+<?php $connect=mysqli_connect("localhost","root","","shop_db"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,8 +145,8 @@ function sproducts(q)
 
 <div class="form-group" style="margin-top: -70px; margin-left: ">
   <label class="col-md-6 control-label" for="textinput" id="color">Issued by:</label>  
-  <div class="col-md-6" id= "displayStaff">
-   
+  <div class="col-md-6" id= "displaStaff">
+   <input class='form-control' name='nid' id='id' type="text"  value="<?php  echo $_SESSION['name']." ".$_SESSION['middle'] ; ?>"  disabled="disabled">
   </div>
 </div>
   <div class="form-group">
