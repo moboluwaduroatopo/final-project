@@ -5,9 +5,10 @@ Class product {
 		function creatConnection(){
 			$this->connect=mysqli_connect("localhost","root","","shop_db");
 		}
-		function saveToDataBase($customer_name,$total,$tende,$chang,$payment_type,$nid){
+		function saveToDataBase($customer_name,$total,$tende,$chang,$payment_type,$id){
+			echo $nid;
 			$key = sha1(customer_name." ".rand(1000,1000000));
-			$result=mysqli_query($this->connect, "INSERT INTO sale_tb(customer_name,total,tende,chang,payment_type,dates,keyd,admin_id)VALUES('$customer_name','$total','$tende','$chang','$payment_type',now(),'$key','$nid')");
+			$result=mysqli_query($this->connect, "INSERT INTO sale_tb(customer_name,total,tende,chang,payment_type,dates,keyd,admin_id)VALUES('$customer_name','$total','$tende','$chang','$payment_type',now(),'$key','$id')");
 					
 				if ($result) 
 				{
@@ -54,7 +55,7 @@ Class product {
 };
     $product = new product();
 	$product->creatConnection();
-	 $product->saveToDataBase($_POST["customer_name"],$_POST["total"],$_POST["tende"],$_POST["chang"],$_POST["payment_type"],$_POST["nid"]);
+	 $product->saveToDataBase($_POST["customer_name"],$_POST["total"],$_POST["tende"],$_POST["chang"],$_POST["payment_type"],$_POST["id"]);
 		
 ?>
               

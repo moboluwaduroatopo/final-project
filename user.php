@@ -74,8 +74,8 @@ if (isset($_SESSION["adminid"])) {
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="forgot-password.php">
-							Forgot Password?
+						<a class="txt1" href="userreg.php">
+							Not a member?
 						</a>
 					</div>
 				</form>

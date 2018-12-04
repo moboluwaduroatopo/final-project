@@ -34,7 +34,8 @@ $errors=array();
 			$return = "EMAIL_ALREADY_EXISTS";
 			include"userregister.php";
 		}else{
-			$result=mysqli_query($this->connect, "INSERT INTO admin(surname,middlename,lastname,email,username, password,user_type,passport) VALUES ('$sname','$mname','$lname','$email','$username','$password','$usertype','$ppt')");
+			$pwd=sha1($password);
+			$result=mysqli_query($this->connect, "INSERT INTO admin(surname,middlename,lastname,email,username, password,user_type,passport) VALUES ('$sname','$mname','$lname','$email','$username','$pwd','$usertype','$ppt')");
 				if ($result) {
 					header("Location:user.php");
 			}else{

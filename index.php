@@ -198,7 +198,7 @@ $chart_data = substr($chart_data, 0, -2);
                 </div>
               </div>
             </section>
-   <h2 align="center" style="margin-top: -90px">New product price Record Chart </h2>  
+   <h2 align="center" style="margin-top: -90px">Product Price and Profit Record Chart </h2>  
    <div id="chart">
   
 </div>

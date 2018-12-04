@@ -2,7 +2,7 @@
 session_start();
 $con=mysqli_connect("localhost","root","","shop_db");
 echo $_SESSION['id'];
-$view = mysqli_query($con, "select * from staff_tb where staff_id = '$_SESSION[id]'")or die(mysqli_error($con));
+$view = mysqli_query($con, "select * from admin where admin_id = '$_SESSION[id]'")or die(mysqli_error($con));
 while($r=mysqli_fetch_array($view)){
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ while($r=mysqli_fetch_array($view)){
 
 <!-- Form Name -->
 <legend >STAFF REGISTRATION FORM</legend>
-<input type="text" value= <?php echo $r['staff_id'] ?> name="id" hidden>
+<input type="text" value= <?php echo $r['admin_id'] ?> name="id" hidden>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput"  id="color">surname</label>  
@@ -52,28 +52,28 @@ while($r=mysqli_fetch_array($view)){
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">lastname</label>  
   <div class="col-md-6">
-  <input id="lastnmae" name="lname" type="text" value= <?php echo $r['lastname'] ?> class="form-control input-md" required="">
+  <input id="lastnmae" name="lname" type="text" value= <?php echo $r['lastname'] ?> class="form-control input-md" >
     
   </div>
 </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">email</label>  
   <div class="col-md-6">
-  <input id="email" name="email" type="email" value= <?php echo $r['email'] ?> class="form-control input-md" required="">
+  <input id="email" name="email" type="email" value= <?php echo $r['email'] ?> class="form-control input-md">
     
   </div>
 </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">username</label>  
   <div class="col-md-6">
-  <input id="username" name="username" type="username" value= <?php echo $r['username'] ?> class="form-control input-md" required="">
+  <input id="username" name="username" type="username" value= <?php echo $r['username'] ?> class="form-control input-md" >
     
   </div>
 </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">Password</label>  
   <div class="col-md-6">
-  <input id="password" name="password" type="password" value= <?php echo $r['password'] ?> class="form-control input-md" required="">
+  <input id="password" name="password" type="password" value= <?php echo $r['password'] ?> class="form-control input-md" >
     
   </div>
 </div>

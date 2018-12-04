@@ -2,7 +2,9 @@
 session_start();
   Class myproduct{
     public $product;
+    public $sale;
     public $price;
+    public $profit;
     public $quantity;
     public $file;
     //public $type;
@@ -10,8 +12,8 @@ session_start();
      function connect(){
       $this->connect=mysqli_connect("localhost", "root", "", "shop_db");
     }
-      function updateToDataBase($product, $price, $quantity,$file){
-      $result=mysqli_query($this->connect, "update product_tb set  product_name='$product', price='$price', quantity='$quantity', pimage='$file' where product_id='$_SESSION[id]'");
+      function updateToDataBase($product,$sale,$price,$profit,$quantity,$file){
+      $result=mysqli_query($this->connect, "update product_tb set  product_name='$product',sale='$sale', price='$price',profit='$profit', quantity='$quantity', pimage='$file',date=now(),year=now() where product_id='$_SESSION[id]'");
         //echo $_SESSION['id'];
         //echo $_SESSION['id'];
       echo "<script> window.location='product.php';</script>";
@@ -19,7 +21,7 @@ session_start();
   } 
   $product=new myproduct();
   $product->connect();
-  $product->updateToDataBase($_POST["product"],$_POST["price"], $_POST["quantity"],('images/'.$_FILES['file']['name']));
+  $product->updateToDataBase($_POST["product"],$_POST["sale"],$_POST["price"],$_POST["profit"], $_POST["quantity"],('images/'.$_FILES['file']['name']));
  
  
 ?>

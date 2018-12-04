@@ -20,7 +20,7 @@
 				if ($result) {
 					
 					//echo " ";
-					header("Location:product.php");
+					header("Location:Addnewproduct.php");
 				}
 
 			else{

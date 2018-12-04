@@ -1,10 +1,17 @@
 <?php session_start();
+
+// $con=mysqli_connect("localhost","root","","shop_db");
+// $view1 = mysqli_query($con, "select * from product_tb join type using (type_id)  ")or die(mysqli_error($con));
+// //$counter = 0;
+// while($r=mysqli_fetch_array($view1)){
+// }
+?>
+<?php 
 $connect=mysqli_connect("localhost","root","","shop_db");
 if (isset($_SESSION["adminid"])) {
   //session_destroy();
-//header("Location: adminlogin.html");
+//header("Location: adminlogin.html");?>
 
-?>
  <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +41,7 @@ if (isset($_SESSION["adminid"])) {
   
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light bg-#DBDBDB fixed-top" id="mainNav" style="background-color: #DBDBDB">
-    <a class="navbar-brand" href="index.html" id="a">SUPERMARKET LOGO</a>
+    <a class="navbar-brand" href="index.html" id="a">SUPERMARKET </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,10 +53,10 @@ if (isset($_SESSION["adminid"])) {
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="userregister.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">ADD NEW USER</span>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="chartq.php">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Quantity on chart</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -88,19 +95,19 @@ if (isset($_SESSION["adminid"])) {
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="product.php">
-            <i class="fa fa-fw fa-link"></i>
+            <i class="fa fa-book nav_icon"></i>
             <span class="nav-link-text">PRODUCT LIST</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="report.php">
-            <i class="fa fa-fw fa-link"></i>
+            <i class="fa fa-map-marker"></i>
             <span class="nav-link-text">SALES REPORT</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="sale.php">
-            <i class="fa fa-fw fa-link"></i>
+            <i class="fa fa-cog"></i>
             <span class="nav-link-text">SALES GENERATE</span>
           </a>
         </li>

@@ -72,7 +72,7 @@
         //qua = prods[i].quantity;
         pri = prods[i].price;
         qtys=prods[i].quantity;
-        alert(qtys);
+        //alert(qtys);
        // alert(prods[i].product_id);
         $('#p1'+sn).val(pri);
         $('#qt1'+sn).val(qtys);
@@ -140,13 +140,12 @@ function sproducts(q)
          <div id="td" colspan="5" style="color: red;text-align: right; " onkeyup="first()">Tendering:<input type="" id="Tendering" class="tende" name="tende"></div><br>
            <div id="td" colspan="5" style="color: red;text-align: right; " onkeyup="first()">Change:<input type="" id="Change" class="chang" name="chang"><br>
       </div>
-     
       <div>
-
+<input type="hidden" value="<?php echo $_SESSION['adminid']?>" name="id" > 
 <div class="form-group" style="margin-top: -70px; margin-left: ">
   <label class="col-md-6 control-label" for="textinput" id="color">Issued by:</label>  
   <div class="col-md-6" id= "displaStaff">
-   <input class='form-control' name='nid' id='id' type="text"  value="<?php  echo $_SESSION['name']." ".$_SESSION['middle'] ; ?>"  disabled="disabled">
+  <input class='form-control' name='nid' id='id' type="text"  value="<?php  echo $_SESSION['name']." ".$_SESSION['middle'] ; ?>" disabled="disabled"> 
   </div>
 </div>
   <div class="form-group">

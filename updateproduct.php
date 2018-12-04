@@ -1,3 +1,4 @@
+<?php include 'dashboard.php'; ?>
 <?php 
 $con=mysqli_connect("localhost","root","","shop_db");
 $_SESSION['id'] = $_GET['id'];
@@ -29,7 +30,7 @@ while($r=mysqli_fetch_array($view)){
   }
   </style>
 <body>
- <?php include 'dashboard.php'; ?>
+ 
      <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -43,14 +44,12 @@ while($r=mysqli_fetch_array($view)){
       <form class="form-horizontal" method="post" action="updateproduct1.php" enctype="multipart/form-data">
 
 <fieldset>
-<?php 
-$_SESSION['id'] = $_GET['id'];
-//echo $_SESSION['id']; ?>
+
 <!-- Form Name -->
 <legend style="color:#FF5500; text-align: center;" >Update Product</legend>
 
 <!-- Text input-->
-<input type="text" value= name="id" hidden>
+<input type="text" value= <?php echo $r['product_id'] ?> name="id" hidden>
 
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">product name</label>  
@@ -60,12 +59,23 @@ $_SESSION['id'] = $_GET['id'];
   </div>
 </div>
 <div class="form-group">
-  <label class="col-md-6 control-label" for="textinput" id="color">Price</label>  
-  <div class="col-md-12">
-  <input id="price" name="price" type="price" class="form-control input-md" value= <?php echo $r['price'] ?>  >
-    
+  <label class="col-md-6 control-label" for="textinput" id="color">sale</label>  
+  <div class="col-md-12" onkeyup="first()">
+  <input id="sale" name="sale" type="price"  class="form-control input-md" value= <?php echo $r['sale'] ?>>
+    </div>
   </div>
+<div class="form-group">
+  <label class="col-md-6 control-label" for="textinput" id="color">Price</label>  
+  <div class="col-md-12" onkeyup="first()">
+  <input id="price" name="price" type="price" class="form-control input-md" value= <?php echo $r['price'] ?>>
+    </div>
 </div>
+<div class="form-group" onkeyup="first()">
+  <label class="col-md-6 control-label" for="textinput" id="color">Profit</label>  
+  <div class="col-md-12">
+  <input id="profit" name="profit" type="profit"  class="form-control input-md" value= <?php echo $r['profit'] ?>>
+   </div> 
+  </div>
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">Quantity</label>  
   <div class="col-md-12">
@@ -76,7 +86,7 @@ $_SESSION['id'] = $_GET['id'];
 <div class="form-group">
   <label class="col-md-6 control-label" for="textinput" id="color">product file</label>  
   <div class="col-md-12">
-  <input id="file" name="file" type="file"  class="form-control input-md" accept="image/* " value=<?php echo $r['pimage'] ?> >
+  <input id="file" name="file" type="file"  class="form-control input-md" accept="image/* " value="<?php echo $r['pimage'] ?>" >
     
   </div>
 </div>
@@ -84,7 +94,7 @@ $_SESSION['id'] = $_GET['id'];
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-12" >
-    <button style="width: 100%" id="singlebutton"  name="submit" class="btn btn-primary button1">save</button>
+    <button style="width: 100%" id="singlebutton"  name="submit" class="btn btn-primary button1">update</button>
   </div>
 </div>
 <!--  <p style="text-align: right;">
@@ -99,7 +109,18 @@ $_SESSION['id'] = $_GET['id'];
 </div>
 </div>
      </div>
+<script type="text/javascript">
+   function first() {
+       
+     
+        var pri=document.getElementById('price').value;
+        var sal=document.getElementById('sale').value ;
+        var Pro=document.getElementById('profit');
+        Pro.value=  pri - sal;
+         var c = parseInt(pri) - parseInt(sal) ;
 
+    };
+</script>
 </body>
 </html>
 <?php

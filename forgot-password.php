@@ -57,7 +57,7 @@
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="adminregister.php">Register an Account</a>
-          <a class="d-block small" href="adminlogin1.php">Login Page</a>
+          <a class="d-block small" href="user.php">Login Page</a>
         </div>
       </div>
     </div>

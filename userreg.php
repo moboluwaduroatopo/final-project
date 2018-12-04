@@ -1,3 +1,8 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -24,15 +29,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
 <!--//charts-->
 </head>
-<body>  
+<body>	
 <!--inner block start here-->
 <div class="signup-page-main">
-     <div class="signup-main">    
-       <div class="signup-head">
-        <h1>Sign Up</h1>
-      </div>
-      <div class="signup-block">
-        <form class="form-horizontal" method="post" action="userprocess.php" enctype="multipart/form-data">
+     <div class="signup-main">  	
+    	 <div class="signup-head">
+				<h1>Sign Up</h1>
+			</div>
+			<div class="signup-block">
+				<form class="form-horizontal" method="post" action="userprocess.php" enctype="multipart/form-data">
 
 <fieldset>
 <span style="color: white;margin-left: 150px;background-color: red;width: 30%;height: 50px"><?php if(isset($return)){ echo $return;} ?></span>
@@ -90,23 +95,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </fieldset>
 </form>
-        <div class="sign-down">
-        <h4>Already have an account? <a href="user.php"> Login here.</a></h4>
-          <h5><a href="index.php">Go Back to Dashboard</a></h5>
-        </div>
-      </div>
+				<div class="sign-down">
+				<h4>Already have an account? <a href="user.php"> Login here.</a></h4>
+				  <h5><a href="index.php">Go Back to Home</a></h5>
+				</div>
+			</div>
     </div>
 </div>
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-   <p>© 2016 Shopping. All Rights Reserved | Design by moboluwaduro A </p>
-</div>  
+	 <p>© 2016 Shopping. All Rights Reserved | Design by moboluwaduro A </p>
+</div>	
 <!--COPY rights end here-->
 <!--scrolling js-->
-    <script src="js/jquery.nicescroll.js"></script>
-    <script src="js/scripts.js"></script>
-    <!--//scrolling js-->
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/scripts.js"></script>
+		<!--//scrolling js-->
 <script src="js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
@@ -114,4 +119,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                       
-            
+						

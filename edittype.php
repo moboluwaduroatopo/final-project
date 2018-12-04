@@ -1,6 +1,5 @@
 <?php include 'dashboard.php'; ?>
 <?php 
-
 $con=mysqli_connect("localhost","root","","shop_db");
 $_SESSION['id'] = $_GET['id'];
 echo $_SESSION['id'];

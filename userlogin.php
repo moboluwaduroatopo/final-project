@@ -5,8 +5,9 @@ if(isset($_POST['Login'])){
 $username=$_POST['user'];
 $password=$_POST['pass'];
 $user_type=$_POST['user_type'];
+$pwd=sha1($password);
 //$query="SELECT * FROM multiuserlogin WHERE username='".$username."' and password='".$password."' and user_type='".$user_type."'";
-$query="SELECT * FROM admin Where username='$username' and password='$password'   and user_type='$user_type'";
+$query="SELECT * FROM admin Where username='$username' and password='$pwd'   and user_type='$user_type'";
 $result = mysqli_query($connection, $query);
 if($result){
 while($row = mysqli_fetch_array($result)){

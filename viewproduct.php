@@ -1,6 +1,8 @@
+
 <?php
 
 $con=mysqli_connect("localhost","root","","shop_db");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,16 +33,26 @@ $con=mysqli_connect("localhost","root","","shop_db");
         <li class="breadcrumb-item active">Best Food</li>
       </ol>
    <div style="width: 90%;height: 100px">
-<div class="row text-center">
-					<div class="col-md-12">
-						<h4 class="font-weight-bold">Best Food</h4>
+   	<?php
+
+$con=mysqli_connect("localhost","root","","shop_db");
+$tid= $_GET['tid'];
+$view1 = mysqli_query($con, "select * from type  where type_id ='$tid'")or die(mysqli_error($con));
+//$counter = 0;
+while($r=mysqli_fetch_array($view1)){
+	echo"<div class='row text-center'>
+					<div class='col-md-12'>
+						<h4 class='font-weight-bold'>".$r['type_name']."</h4>
 						<hr/>
-					</div></div>
+					</div></div>";
+};
+?>
+
 	
 <div class="row">
 <?php
 $tid= $_GET['tid'];
-$view = mysqli_query($con, "select * from product_tb where type_id ='$tid'")or die(mysqli_error($con));
+$view = mysqli_query($con, "select * from product_tb  where type_id ='$tid'")or die(mysqli_error($con));
 $counter = 0;
 while($r=mysqli_fetch_array($view)){
 
